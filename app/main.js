@@ -2,12 +2,12 @@
  * Created by yangbingxun on 2016/11/18.
  */
 
-var React= require('react');
+// var React= require('react');
 var ReactDOM= require('react-dom');
-var R=require('./router')
+var ChatPane=require('./component/IMChatComponent/ChatPane')
 
 
 ReactDOM.render(
-    <R/>,
-    document.getElementById('content')
+    <ChatPane/>,
+    document.getElementById('msgPane')
 )

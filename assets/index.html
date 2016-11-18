@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" href="/style/MsgBubble.css">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            top:0;
+            left:0;
+        }
+        #header{
+            display: block;
+            width:100%;
+            height: 80px;
+            background-color: silver;
+            margin: 0;
+            padding: 0;
+            top:0;
+            left:0;
+        }
+        .mainHeader{
+            display: block;
+            width:100%;
+            height: 50px;
+            background-color: lightblue;
+        }
+        #body{
+            position: relative;
+            width: 100%;
+            height: 725px;
+
+        }
+        .bodyLeft{
+            display: inline-block;
+            width: 20%;
+            height: 725px;
+            background-color: #0e90d2;
+        }
+        .bodyRight{
+            display: inline-block;
+            width: 80%;
+            height: 725px;
+            background-color: salmon;
+            vertical-align: top;
+        }
+
+    </style>
+</head>
+<body>
+<header id="header">
+    <div class="mainHeader" id="mainHeader"></div>
+    <div id="">
+        <i class="icon-google-plus"></i>
+    </div>
+</header>
+<section id="body">
+    <section class="bodyLeft">
+
+    </section><section class="bodyRight" id="msgPane">
+
+</section>
+</section>
+<footer id="footer"></footer>
+<script src="http://localhost:8081/webpack-dev-server.js"></script>
+<script src="bundle.js"></script>
+<script src="lib/Jquery/jquery_2.1.4.js"></script>
+<script src="lib/Jquery/jquery.qqFace.js"></script>
+</body>
+</html>
