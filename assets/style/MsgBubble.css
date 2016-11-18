@@ -1,0 +1,363 @@
+.msgContent{
+    width:100%;
+    height: 660px;
+    overflow: scroll;
+    background-color: white;
+}
+.singleMsg{
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.msg_content{
+    display: inline-block;
+    vertical-align: top;
+    width: 70%;
+    position: relative;
+}
+.head_img{
+    height: 50px;
+    width: 50px;
+    margin-top: 0px;
+    display: inline-block;
+    background-color: transparent;
+    vertical-align: top;
+}
+.head_img img{
+    object-fit: fill;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+
+}
+.msg_content div{
+    background-color: #cfcfff;
+    border-radius: 10px;
+    /*text-align: start;*/
+    line-height: 20px;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    display: inline-block;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+
+.receive.singleMsg .msg_content div::before{
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -20px;
+    top:15px;
+    border: 10px solid transparent;
+    border-left-color: #cfcfff;
+    transform: rotate(180deg);
+}
+.receive.singleMsg{
+    zoom: 1;
+}
+.receive.singleMsg::after{
+    content: ' ';
+    display: block;
+    clear: both;
+}
+.receive.singleMsg .head_img{
+    float: left;
+    margin-left: 10px;
+}
+.receive.singleMsg .msg_content{
+    margin-left: 20px;
+    float: left;
+}
+.send.singleMsg .msg_content div{
+    float: left;
+}
+
+
+.send.singleMsg{
+    zoom: 1;
+}
+.send.singleMsg::after{
+    content: ' ';
+    display: block;
+    clear: both;
+}
+.send.singleMsg .head_img{
+    float: right;
+    margin-right: 10px;
+}
+.send.singleMsg .msg_content{
+    margin-right: 20px;
+    float: right;
+}
+.send.singleMsg .msg_content div{
+    float: right;
+}
+.send.singleMsg .msg_content div::after{
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    float: right;
+    right: -20px;
+    top:15px;
+    border: 10px solid transparent;
+    border-left-color: #cfcfff;
+}
+
+
+.timeBlock{
+    display: block;
+    width: 100%;
+    height: 20px;
+    margin-top: 20px;
+    position: relative;
+}
+.timeBlock div{
+    display: inline-block;
+    text-align: center;
+    padding-top: 5px;
+    width:15%;
+    height: 20px;
+    left: 0;right: 0;
+    top:0; bottom: 0;
+    margin: 0 auto;
+    position: absolute;
+    background-color: #dedeee;
+    border-radius: 10px;
+
+}
+
+
+.sendMsgBar{
+    display: block;
+    width:100%;
+    height: 65px;
+    background-color: #efefef;
+    position: relative;
+}
+
+.textBar{
+    display: inline-block;
+    width: 89%;
+    position: relative;
+    margin-top:5px;
+    margin-right: 1%;
+    vertical-align: top;
+}
+.textBar textarea{
+    width:100%;
+    height: 30px;
+    font-size: 15px;
+    resize: none;
+    border-radius: 5px;
+    overflow: auto;
+    background-color: #fffffe;
+    border-top: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    box-shadow: 1px 1px 2px #aaaaaa inset;
+    position: absolute;
+    top:3px;bottom:0;left: 0;right: 0;
+    margin: 0 auto;
+    /*padding-right: 30px;*/
+}
+
+
+
+.moreBtnBlock{
+    position: relative;
+    display: inline-block;
+    width:3%;
+    height: 30px;
+    vertical-align: top;
+    margin-top: 10px;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.moreBtn{
+    position: absolute;
+    display: block;
+    width:30px;
+    height: 30px;
+    top:0;bottom:0;left: 0;right: 0;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+.moreBtn i{
+    position: absolute;
+    width: 21px;
+    height: 5px;
+    left: 5px;right: 0;
+    bottom:0;top:0;
+    margin: auto 0;
+    background-color: #222222;
+    border-radius: 5px;
+
+}
+.moreBtn i::before{
+    content: ' ';
+    position: absolute;
+    width: 5px;
+    height: 21px;
+    left: 8px;right: 0;
+    bottom:0;top:0;
+    margin: auto 0;
+    background-color: #222222;
+    border-radius: 5px;
+}
+.moreBtn{
+    box-shadow: 1px 1px 2px #222222;
+}
+.moreBtn:hover{
+    box-shadow: 1px 1px 2px #222222 inset;
+}
+
+
+.emojiBtnBlock{
+    display: inline-block;
+    width: 3%;
+    height: 30px;
+    position: relative;
+    vertical-align: top;
+    margin-top: 10px;
+    float: right;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.emojiBtn{
+    position: absolute;
+    display: inline-block;
+    width:20px;
+    height: 20px;
+    border-radius: 30px;
+    left: 0;right: 0;
+    top:5px;bottom: 0;
+    margin: 0 auto;
+    border: 2px solid #222222;
+}
+.emojiBtn i{
+    position: absolute;
+    display: block;
+    width: 3px;
+    height: 3px;
+    background-color: #222222;
+    border-radius: 3px;
+    top:5px;left: 4px;
+}
+.emojiBtn i::before{
+    content: ' ';
+    position: absolute;
+    display: block;
+    width: 3px;
+    height: 3px;
+    background-color: #222222;
+    border-radius: 3px;
+    top:0px;left: 8px;
+}
+.emojiBtn i::after{
+    content: ' ';
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 18px;
+    background-color: transparent;
+    border-radius: 16px;
+    top: -10px;
+    left: 0px;
+    border: 1px solid transparent;
+    border-bottom: 3px solid #222222;
+}
+
+
+.changeSendBtnBlock{
+    position: absolute;
+    display: inline-block;
+    width:3%;
+    height: 30px;
+    vertical-align: top;
+    top: 5px;
+    float: right;
+    right: 1%;
+}
+.changeSendBtn{
+    position: absolute;
+    display: block;
+    width:30px;
+    height: 30px;
+    border-radius: 15px;
+    top:0;bottom:0;left: 0;right: 0;
+    margin: 0 auto;
+}
+.changeSendBtn::after{
+    content: ' ';
+    position: absolute;
+    display: block;
+    width: 2px;
+    height: 2px;
+    top:0px;
+    left: 6px;
+    border: 12px solid transparent;
+    border-bottom: 18px solid #222222;
+    border-radius: 5px;
+}
+
+.textBar textarea:focus,.sendBtn button:focus{
+    outline: none;
+}
+
+/*qqFace*/
+.qqFace{
+    position: absolute;
+    top:4px;
+    background:#fff;
+    padding:2px;
+    border:1px #dfe6f6 solid;}
+.qqFace table td{padding:0px;}
+.qqFace table td img{cursor:pointer;border:1px #fff solid;}
+.qqFace table td img:hover{border:1px #0066cc solid;}
+
+
+
+
+/*animate*/
+.animate{
+    -webkit-animation-duration: 0.7s;
+    animation-duration: 0.7s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    animation-delay: 0.2s;
+}
+
+.head_img.animate{
+    animation-delay: 0s;
+}
+
+@keyframes bounceInUp {
+    from,70%, to {
+        animation-timing-function: cubic-bezier(35,.61,.02,.99);
+    }
+
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100px, 0);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translate3d(0, -5px, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+.bounceInUp {
+    animation-name: bounceInUp;
+}

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"hey man\"",
     "build":"webpack",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build --history-api-fallback"
+    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base assets --history-api-fallback"
   },
   "author": "xavier",
   "license": "ISC",

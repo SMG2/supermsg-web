@@ -2,10 +2,9 @@
  * Created by yangbingxun on 2016/11/18.
  */
 
-// var React= require('react');
+var React= require('react');
 var ReactDOM= require('react-dom');
-var ChatPane=require('./component/IMChatComponent/ChatPane')
-
+var ChatPane=require('./component/IMChatComponent/ChatPane/ChatPane')
 
 ReactDOM.render(
     <ChatPane/>,

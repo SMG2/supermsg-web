@@ -2,7 +2,7 @@
  * Created by yangbingxun on 2016/11/18.
  */
 
-var react=require('react');
+var React=require('react');
 class MoreBtn extends React.Component {
     constructor(props) {
         super(props);

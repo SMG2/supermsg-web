@@ -3,7 +3,7 @@
  */
 var React=require('react');
 
-class SingleMsg extends React.component{
+class SingleMsg extends React.Component{
     constructor(props){
         super(props);
     }
@@ -14,16 +14,16 @@ class SingleMsg extends React.component{
 
     render(){
         var msgDiv;
-        switch (props.forward){
+        switch (this.props.forward){
             case 'send':
                 msgDiv=(
                     <div className="send singleMsg ">
                         <div className="head_img animate bounceInUp">
-                            <img src={props.headImg}/>
+                            <img src={this.props.headImg}/>
                         </div>
                         <div className="animate bounceInUp">
                             <div className="msg_content ">
-                                <div dangerouslySetInnerHTML={this.getContentHtml(props.content)}>
+                                <div dangerouslySetInnerHTML={this.getContentHtml(this.props.content)}>
                                 </div>
                             </div>
                         </div>
@@ -34,11 +34,11 @@ class SingleMsg extends React.component{
                 msgDiv=(
                     <div className="receive singleMsg">
                         <div className="head_img animate bounceInUp">
-                            <img src={props.headImg}/>
+                            <img src={this.props.headImg}/>
                         </div>
                         <div className="animate bounceInUp">
                             <div className="msg_content ">
-                                <div dangerouslySetInnerHTML={this.getContentHtml(props.content)}>
+                                <div dangerouslySetInnerHTML={this.getContentHtml(this.props.content)}>
                                 </div>
                             </div>
                         </div>

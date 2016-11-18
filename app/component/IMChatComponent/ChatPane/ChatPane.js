@@ -2,6 +2,8 @@
  * Created by yangbingxun on 2016/11/18.
  */
 
+var React=require('react');
+var ReactDOM=require('react-dom');
 var InputBar=require('./InputBar/InputBar');
 var MsgPane=require('./MsgPane/MsgPane');
 
@@ -22,6 +24,7 @@ class ChatPane extends React.Component {
 
     refreshMsg(msgList){
         var msgList=msgList;
+
         // var last=msgList[msgList.length-2].time;
         // var now=msgList[msgList.length-1].time;
         ReactDOM.render(
