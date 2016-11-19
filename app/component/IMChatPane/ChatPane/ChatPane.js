@@ -23,10 +23,6 @@ class ChatPane extends React.Component {
     }
 
     refreshMsg(msgList){
-        var msgList=msgList;
-
-        // var last=msgList[msgList.length-2].time;
-        // var now=msgList[msgList.length-1].time;
         ReactDOM.render(
             <MsgPane msgList={msgList} />,
             document.getElementById('showMsg')

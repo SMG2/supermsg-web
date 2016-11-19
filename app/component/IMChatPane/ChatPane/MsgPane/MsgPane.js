@@ -3,15 +3,21 @@
  */
 var React=require('react');
 var SingleMsg=require('./SingleMsg');
+var TimeBar=require('./TimeBar');
 
 class MsgPane extends React.Component{
     constructor(props){
         super(props);
+        this.state={
+            addTimeBar:false
+        }
     }
 
     componentDidUpdate() {
         this.toNewMsg(document.getElementById('showMsg'));
+
     }
+
 
     toNewMsg(node){
         node.scrollTop=node.scrollHeight;
@@ -20,10 +26,10 @@ class MsgPane extends React.Component{
     render() {
         const msgListBlock = [];
         this.props.msgList.forEach(msg=> {
-            msgListBlock.push(
-                <SingleMsg forward={msg.forward} content={msg.content} key={msg.time} headImg={msg.headImg}/>
-            )
-        })
+                msgListBlock.push(
+                    <SingleMsg key={msg.timeStamp} forward={msg.forward} content={msg.content}  headImg={msg.headImg} time={msg.time} date={msg.date}/>
+                )
+        });
         return (
             <div>{msgListBlock}</div>
         )

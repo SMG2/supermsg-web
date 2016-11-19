@@ -4,9 +4,9 @@
 
 var React= require('react');
 var ReactDOM= require('react-dom');
-var ChatPane=require('./component/IMChatComponent/ChatPane/ChatPane')
+var IMChatPane=require('./component/IMChatPane/IMChatPane')
 
 ReactDOM.render(
-    <ChatPane/>,
-    document.getElementById('msgPane')
+    <IMChatPane/>,
+    document.getElementById('body')
 )

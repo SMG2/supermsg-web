@@ -28,24 +28,53 @@
     height: 50px;
     width: 50px;
     border-radius: 25px;
-
 }
-.msg_content div{
+
+.content,.timeBlock{
+    display: block;
+    max-width: 100%;
+}
+
+
+.msg_content .content div{
+    display: block;
     background-color: #cfcfff;
     border-radius: 10px;
-    /*text-align: start;*/
+    text-align: start;
     line-height: 20px;
     padding-top: 15px;
     padding-left: 10px;
     padding-right: 10px;
-    padding-bottom: 10px;
-    display: inline-block;
+    padding-bottom: 15px;
     max-width: 100%;
     word-wrap: break-word;
 }
 
+.msg_content .timeBlock div{
+    display: block;
+    width: 100%;
+    height: 20px;
+    position: relative;
+}
+.timeBlock div{
+    display: block;
+    float: right;
+    height: 20px;
+    color: #777777;
+    font-size: 10px;
+    padding-top: 3px;
+}
 
-.receive.singleMsg .msg_content div::before{
+.receive .timeBlock div{
+    text-align: start;
+}
+.send .timeBlock div{
+    text-align: end;
+}
+
+
+
+.receive.singleMsg .msg_content .content::before{
     content: ' ';
     display: block;
     position: absolute;
@@ -54,8 +83,7 @@
     left: -20px;
     top:15px;
     border: 10px solid transparent;
-    border-left-color: #cfcfff;
-    transform: rotate(180deg);
+    border-right-color: #cfcfff;
 }
 .receive.singleMsg{
     zoom: 1;
@@ -73,31 +101,12 @@
     margin-left: 20px;
     float: left;
 }
-.send.singleMsg .msg_content div{
+.receive.singleMsg .msg_content .content{
     float: left;
 }
 
 
-.send.singleMsg{
-    zoom: 1;
-}
-.send.singleMsg::after{
-    content: ' ';
-    display: block;
-    clear: both;
-}
-.send.singleMsg .head_img{
-    float: right;
-    margin-right: 10px;
-}
-.send.singleMsg .msg_content{
-    margin-right: 20px;
-    float: right;
-}
-.send.singleMsg .msg_content div{
-    float: right;
-}
-.send.singleMsg .msg_content div::after{
+.send.singleMsg .msg_content .content::after{
     content: ' ';
     display: block;
     position: absolute;
@@ -109,29 +118,26 @@
     border: 10px solid transparent;
     border-left-color: #cfcfff;
 }
-
-
-.timeBlock{
-    display: block;
-    width: 100%;
-    height: 20px;
-    margin-top: 20px;
-    position: relative;
+.send.singleMsg{
+    zoom: 1;
 }
-.timeBlock div{
-    display: inline-block;
-    text-align: center;
-    padding-top: 5px;
-    width:15%;
-    height: 20px;
-    left: 0;right: 0;
-    top:0; bottom: 0;
-    margin: 0 auto;
-    position: absolute;
-    background-color: #dedeee;
-    border-radius: 10px;
-
+.send.singleMsg::after{
+     content: ' ';
+     display: block;
+     clear: both;
+ }
+.send.singleMsg .head_img{
+    float: right;
+    margin-right: 10px;
 }
+.send.singleMsg .msg_content{
+    margin-right: 20px;
+    float: right;
+}
+.send.singleMsg .msg_content .content{
+    float: left;
+}
+
 
 
 .sendMsgBar{
@@ -324,6 +330,18 @@
 .qqFace table td img:hover{border:1px #0066cc solid;}
 
 
+/*clearfix*/
+.clearfix:after{
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ' ';
+    clear: both;
+    height: 0;
+}
+.clearfix{
+    zoom: 1;
+}
 
 
 /*animate*/

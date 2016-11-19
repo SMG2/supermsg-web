@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
-    <link rel="stylesheet" href="style/MsgBubble.css">
+    <link rel="stylesheet" href="style/IMChatPane.css">
     <style>
         body{
             margin: 0;
@@ -30,23 +30,9 @@
         #body{
             position: relative;
             width: 100%;
-            height: 725px;
+            overflow: hidden;
 
         }
-        .bodyLeft{
-            display: inline-block;
-            width: 20%;
-            height: 725px;
-            background-color: #0e90d2;
-        }
-        .bodyRight{
-            display: inline-block;
-            width: 80%;
-            height: 725px;
-            background-color: salmon;
-            vertical-align: top;
-        }
-
     </style>
 </head>
 <body>
@@ -57,16 +43,21 @@
     </div>
 </header>
 <section id="body">
-    <section class="bodyLeft">
-
-    </section><section class="bodyRight" id="msgPane">
-
 </section>
-</section>
-<footer id="footer"></footer>
-<script src="http://localhost:8081/webpack-dev-server.js"></script>
-<script src="bundle.js"></script>
 <script src="lib/Jquery/jquery_2.1.4.js"></script>
 <script src="lib/Jquery/jquery.qqFace.js"></script>
+<script>
+    $(function(){
+        var clientHeight=$(window).height();
+        var clientWidth=$(window).width();
+        $('#body').css({
+            height:clientHeight-80+"px"
+        })
+        console.log(clientHeight-80+"px"+" "+clientWidth)
+    })
+</script>
+<script src="http://localhost:8081/webpack-dev-server.js"></script>
+<script src="bundle.js"></script>
+
 </body>
 </html>

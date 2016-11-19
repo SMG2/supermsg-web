@@ -2,6 +2,7 @@
  * Created by yangbingxun on 2016/11/18.
  */
 var React=require('react');
+var TimeBar=require('./TimeBar');
 
 class SingleMsg extends React.Component{
     constructor(props){
@@ -21,10 +22,12 @@ class SingleMsg extends React.Component{
                         <div className="head_img animate bounceInUp">
                             <img src={this.props.headImg}/>
                         </div>
-                        <div className="animate bounceInUp">
+                        <div className="animate bounceInUp ">
                             <div className="msg_content ">
-                                <div dangerouslySetInnerHTML={this.getContentHtml(this.props.content)}>
+                                <div className="content">
+                                    <div  dangerouslySetInnerHTML={this.getContentHtml(this.props.content)} />
                                 </div>
+                                <TimeBar date={this.props.date} time={this.props.time}/>
                             </div>
                         </div>
                     </div>
@@ -32,14 +35,16 @@ class SingleMsg extends React.Component{
                 break;
             case 'receive':
                 msgDiv=(
-                    <div className="receive singleMsg">
+                    <div className="receive singleMsg ">
                         <div className="head_img animate bounceInUp">
                             <img src={this.props.headImg}/>
                         </div>
-                        <div className="animate bounceInUp">
+                        <div className="animate bounceInUp ">
                             <div className="msg_content ">
-                                <div dangerouslySetInnerHTML={this.getContentHtml(this.props.content)}>
+                                <div className="content">
+                                    <div  dangerouslySetInnerHTML={this.getContentHtml(this.props.content)} />
                                 </div>
+                                <TimeBar date={this.props.date} time={this.props.time}/>
                             </div>
                         </div>
                     </div>

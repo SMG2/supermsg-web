@@ -15,15 +15,17 @@ class InputBar extends React.Component{
         this.send=this.send.bind(this);
     }
 
-
     send(_msg){
         _msg=this.replace_em(_msg);
         var dateTime=new Date();
+        var time=dateTime.toTimeString();
         var msg={
-            forward:'send',
+            forward:'receive',
             content:_msg,
-            time:Math.round(dateTime.getTime()/1000).toString(),
-            headImg:'material/img/headImg/hj.jpg'
+            timeStamp:dateTime.getTime().toString(),
+            headImg:'material/img/headImg/hj.jpg',
+            time:time.split(':')[0]+":"+time.split(':')[1],
+            date:(dateTime.getMonth()+1)+"月"+dateTime.getDate()+"日"
         }
         this.props.send(msg);
     }
@@ -40,8 +42,9 @@ class InputBar extends React.Component{
         return(
             <div className="sendMsgBar">
                 <MoreButton/>
-                <MsgInput send={this.send} />
                 <EmotionButton/>
+                <MsgInput send={this.send} />
+
             </div>
         )
     }
