@@ -15,9 +15,9 @@ class IMChatPane extends React.Component{
     render(){
         return(
         <div>
-            <section className="Chatgroup">
+            <section id="ChatGroup" className="ChatGroup">
                 <ChatGroup/>
-            </section><section className="ChatPane">
+            </section><section id="ChatPane" className="ChatPane">
                 <ChatPane/>
             </section>
         </div>

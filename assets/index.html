@@ -50,9 +50,12 @@
     $(function(){
         var clientHeight=$(window).height();
         var clientWidth=$(window).width();
-        $('#body').css({
+        var css={
             height:clientHeight-80+"px"
-        })
+        };
+        $('#body').css(css);
+        $('#ChatPane').css(css);
+        $('#ChatGroup').css(css);
         console.log(clientHeight-80+"px"+" "+clientWidth)
     })
 </script>

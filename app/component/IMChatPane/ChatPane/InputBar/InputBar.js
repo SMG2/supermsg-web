@@ -11,7 +11,7 @@ var MsgInput=require('./MsgInput');
 class InputBar extends React.Component{
     constructor(props){
         super(props);
-        this.state={msgList:[]}
+        this.state={msgList:[],send:false}
         this.send=this.send.bind(this);
     }
 
@@ -20,14 +20,22 @@ class InputBar extends React.Component{
         var dateTime=new Date();
         var time=dateTime.toTimeString();
         var msg={
-            forward:'receive',
+            forward:'send',
             content:_msg,
             timeStamp:dateTime.getTime().toString(),
             headImg:'material/img/headImg/hj.jpg',
             time:time.split(':')[0]+":"+time.split(':')[1],
             date:(dateTime.getMonth()+1)+"月"+dateTime.getDate()+"日"
         }
-        this.props.send(msg);
+        if(this.state.send){
+            this.props.send(msg);
+            this.setState({send:!this.state.send})
+        }else{
+            msg.forward='receive';
+            this.props.send(msg);
+            this.setState({send:!this.state.send})
+        }
+
     }
 
     replace_em(str){  //从 textarea 替换表情符号
