@@ -10,7 +10,7 @@ var webpack = require('webpack');
 module.exports = {
     entry:[
         'webpack/hot/dev-server',
-        './app/main.js'
+        './app/main.js',
     ],
     output: {
         path: path.resolve(__dirname, './assets'),

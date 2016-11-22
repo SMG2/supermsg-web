@@ -33,7 +33,7 @@ class MsgInput extends  React.Component {
 
     render(){
         return(
-            <div className="textBar">
+            <div className="textBar clearfix">
                 <textarea id="msgInput" name="msgInput" onChange={this.change} value={this.state.msg} onKeyPress={this.keyDown}>
                 </textarea>
             </div>

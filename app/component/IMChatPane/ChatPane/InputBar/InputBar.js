@@ -21,7 +21,7 @@ class InputBar extends React.Component{
         var time=dateTime.toTimeString();
         var msg={
             forward:'send',
-            content:_msg,
+            content:_msg.trim(),
             timeStamp:dateTime.getTime().toString(),
             headImg:'material/img/headImg/hj.jpg',
             time:time.split(':')[0]+":"+time.split(':')[1],
@@ -49,10 +49,10 @@ class InputBar extends React.Component{
     render(){
         return(
             <div className="sendMsgBar">
-                <MoreButton/>
-                <EmotionButton/>
                 <MsgInput send={this.send} />
 
+                <EmotionButton/>
+                <MoreButton/>
             </div>
         )
     }
