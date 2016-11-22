@@ -13,12 +13,14 @@ class IMChatPane extends React.Component{
 
 
     render(){
+        const {dispatch,msgList} = this.props;
+
         return(
         <div>
             <section id="ChatGroup" className="ChatGroup">
                 <ChatGroup/>
             </section><section id="ChatPane" className="ChatPane">
-                <ChatPane />
+                <ChatPane MsgList={}/>
             </section>
         </div>
         )

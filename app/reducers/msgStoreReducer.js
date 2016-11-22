@@ -15,20 +15,8 @@ function viewChatMsg(state=[],action){
     }
 }
 
-function sendMsg(state=[],action) {
-    switch(action.type){
-        case SEND_MSG_TO_P:
-            return [
-                ...state.pchat[action.userid],
-                {
-                    forward:'send',
-                    type:action.msg.type,
-                    content:action.msg.content,
-                    date:action.msg.date,
-                    time:action.msg.time
-                }
-            ]
-        break;
+function groupMsg(state=[],action){
+    switch (action.type){
         case SEND_MSG_TO_G:
             return [
                 ...state.gchat[action.groupid],
@@ -40,26 +28,7 @@ function sendMsg(state=[],action) {
                     time:action.msg.time
                 }
             ]
-        break;
-        default:
-            return state;
-    }
-}
-
-function receiveMsg(state=[],action){
-    switch (action.type){
-        case RECEIVE_MSG_FROM_P:
-            return[
-                ...state.pchat[action.userid],
-                {
-                    forward:'receive',
-                    type:action.msg.type,
-                    content:action.msg.content,
-                    date:action.msg.date,
-                    time:action.msg.time
-                }
-            ]
-        break;
+            break;
         case RECEIVE_MSG_FROM_G:
             return[
                 ...state.gchat[action.groupid],
@@ -72,8 +41,43 @@ function receiveMsg(state=[],action){
                     time:action.msg.time
                 }
             ]
+        break;
         default:
             return state;
-
     }
 }
+
+function p2pMsg(state=[],action) {
+    switch(action.type) {
+        case SEND_MSG_TO_P:
+            return [
+                ...state.pchat[action.userid],
+                {
+                    forward: 'send',
+                    type: action.msg.type,
+                    content: action.msg.content,
+                    date: action.msg.date,
+                    time: action.msg.time
+                }
+            ]
+            break;
+        case RECEIVE_MSG_FROM_P:
+            return[
+                ...state.pchat[action.userid],
+                {
+                    forward:'receive',
+                    type:action.msg.type,
+                    content:action.msg.content,
+                    date:action.msg.date,
+                    time:action.msg.time
+                }
+            ]
+            break;
+        default:
+            return state;
+    }
+}
+
+const superMsg=combineReducers({viewChatMsg,p2pMsg,groupMsg});
+
+export default superMsg;

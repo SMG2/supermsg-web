@@ -4,19 +4,20 @@
 
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
+import superMsg from './reducers/msgStoreReducer'
 
 
 var React= require('react');
 var ReactDOM= require('react-dom');
 var IMChatPane=require('./component/IMChatPane/IMChatPane')
-var msgStore=require('./reducers/msgStoreReducer');
 
-// let store=createStore(msgStore);
+
+let store=createStore(superMsg);
 
 ReactDOM.render(
-    // <Provider store={store}>
+    <Provider store={store}>
         <IMChatPane/>,
-    // </Provider>,
+    </Provider>,
     document.getElementById('body')
 )
 
