@@ -2,44 +2,29 @@
  * Created by yangbingxun on 2016/11/18.
  */
 
-var React=require('react');
-var ReactDOM=require('react-dom');
-var InputBar=require('./InputBar/InputBar');
-var MsgPane=require('./MsgPane/MsgPane');
 
-class ChatPane extends React.Component {
+import InputBar from './InputBar/InputBar'
+import MsgPane from'./MsgPane/MsgPane'
+
+var React=require('react');
+
+export default class ChatPane extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            msgList: []
-        }
-        this.show = this.show.bind(this);
     }
 
-
-    show(msg){
-        this.state.msgList.push(msg);
-        this.refreshMsg(this.state.msgList);
+    send(msg){
+        this.props.send(msg);
     }
-
-    refreshMsg(msgList){
-        ReactDOM.render(
-            <MsgPane msgList={msgList} />,
-            document.getElementById('showMsg')
-    );
-}
-
 
     render(){
         return (
             <div>
                 <div id="showMsg" className="msgContent">
-
+                    {typeof this.props.msgList=='object'&&this.props.msgList instanceof Array?<MsgPane msgList={this.props.msgList} id={this.props.id}/>:<div/>}
                 </div>
-                <InputBar send={this.show} />
+                <InputBar send={this.props.send} />
             </div>
         )
     }
 }
-
-module.exports=ChatPane;

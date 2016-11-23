@@ -1,10 +1,11 @@
 /**
  * Created by yangbingxun on 2016/11/18.
  */
-var React=require('react');
-var TimeBar=require('./TimeBar');
+import TimeBar from './TimeBar'
 
-class SingleMsg extends React.Component{
+var React=require('react');
+
+export default class SingleMsg extends React.Component{
     constructor(props){
         super(props);
     }
@@ -54,5 +55,3 @@ class SingleMsg extends React.Component{
         return msgDiv;
     }
 }
-
-module.exports=SingleMsg;

@@ -10,6 +10,8 @@
             padding: 0;
             top:0;
             left:0;
+            overflow: hidden;
+
         }
         #header{
             display: block;
@@ -53,10 +55,13 @@
         var css={
             height:clientHeight-80+"px"
         };
+        $('body').css({
+            height:clientHeight+'px',
+            width:clientWidth+'px'
+        })
         $('#body').css(css);
         $('#ChatPane').css(css);
         $('#ChatGroup').css(css);
-        console.log(clientHeight-80+"px"+" "+clientWidth)
     })
 </script>
 <script src="http://localhost:8081/webpack-dev-server.js"></script>

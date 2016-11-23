@@ -4,7 +4,7 @@
 
 var React=require('react');
 
-class TimeBar extends React.Component{
+export default class TimeBar extends React.Component{
     constructor(props){
         super(props)
     }
@@ -17,5 +17,3 @@ class TimeBar extends React.Component{
         )
     }
 }
-
-module.exports=TimeBar;

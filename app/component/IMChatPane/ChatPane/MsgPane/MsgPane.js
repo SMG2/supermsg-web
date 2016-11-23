@@ -1,21 +1,19 @@
 /**
  * Created by yangbingxun on 2016/11/18.
  */
-var React=require('react');
-var SingleMsg=require('./SingleMsg');
-var TimeBar=require('./TimeBar');
 
-class MsgPane extends React.Component{
+
+import SingleMsg from'./SingleMsg'
+
+var React=require('react');
+
+export default class MsgPane extends React.Component{
     constructor(props){
         super(props);
-        this.state={
-            addTimeBar:false
-        }
     }
 
     componentDidUpdate() {
         this.toNewMsg(document.getElementById('showMsg'));
-
     }
 
 
@@ -25,15 +23,21 @@ class MsgPane extends React.Component{
 
     render() {
         const msgListBlock = [];
-        this.props.msgList.forEach(msg=> {
-                msgListBlock.push(
-                    <SingleMsg key={msg.timeStamp} forward={msg.forward} content={msg.content}  headImg={msg.headImg} time={msg.time} date={msg.date}/>
-                )
-        });
-        return (
-            <div>{msgListBlock}</div>
+        if(this.props.msgList instanceof Array )
+            this.props.msgList.forEach((msg,index)=> {
+                    msgListBlock.push(
+                        <SingleMsg key={this.props.id+""+index} forward={msg.forward} content={msg.content}  headImg={msg.headImg} time={msg.time} date={msg.date}/>
+                    )
+            });
+        if(msgListBlock.length!=0){
+            return (
+                <div>{msgListBlock}</div>
+            )
+        }else{
+            return(
+                <div/>
         )
+        }
+
     }
 }
-
-module.exports=MsgPane;

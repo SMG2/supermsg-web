@@ -4,7 +4,7 @@
 
 var React=require('react');
 
-class EmotionButton extends  React.Component {
+export default class EmotionButton extends  React.Component {
     constructor(props) {
         super(props);
     }
@@ -28,4 +28,3 @@ class EmotionButton extends  React.Component {
         )
     }
 }
-module.exports=EmotionButton;

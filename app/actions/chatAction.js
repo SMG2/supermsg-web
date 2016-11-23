@@ -13,8 +13,11 @@ export function sendMsgToP(msg){
 *
 *   date:
 *   time:
+*   headImg:
+*   timeStamp:
 * }
  */
+
     return {
         type:SEND_MSG_TO_P,
         msg:msg
@@ -24,10 +27,14 @@ export function sendMsgToP(msg){
 export function sendMsgToG(msg){
     /*
 * msg={
-*   userid:
 *   groupid:
-*   type:                        提醒朱鑫
-*   content:
+    type:                        提醒朱鑫
+    content:
+
+    date:
+    time:
+    headImg:
+    timeStamp:
 * }
  */
     return {
@@ -52,7 +59,7 @@ export function receiveMsgFromG(msg){
 export function showChatMsg(filter){
     /*
     filter={
-        view:GROUP_CHAT||P2P_CHAT
+        type:GROUP_CHAT||P2P_CHAT
         id:groupid||userid
     }
      */

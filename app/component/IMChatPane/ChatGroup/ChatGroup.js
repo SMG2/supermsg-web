@@ -3,15 +3,18 @@
  */
 var React = require('react');
 
-class  ChatGroup extends React.Component{
+export default class ChatGroup extends React.Component{
     constructor(props){
         super(props);
     }
 
     render(){
-        return(<div></div>)
+        return(
+            <div>
+                <div onClick={this.props.test1}>第一组</div>
+                <div onClick={this.props.test2}>第二组</div>
+            </div>
+        )
     }
 
 }
-
-module.exports=ChatGroup;

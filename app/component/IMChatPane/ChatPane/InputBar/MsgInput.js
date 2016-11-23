@@ -3,7 +3,7 @@
  */
 var React=require('react');
 
-class MsgInput extends  React.Component {
+export  default class MsgInput extends  React.Component {
     constructor(props) {
         super(props);
         this.state={
@@ -40,5 +40,3 @@ class MsgInput extends  React.Component {
         )
     }
 }
-
-module.exports=MsgInput;

@@ -3,7 +3,7 @@
  */
 
 var React=require('react');
-class MoreBtn extends React.Component {
+export default class MoreBtn extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -18,4 +18,3 @@ class MoreBtn extends React.Component {
         )
     }
 }
-module.exports=MoreBtn;

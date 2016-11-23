@@ -1,14 +1,14 @@
 /**
  * Created by yangbingxun on 2016/11/18.
  */
+
+import EmotionButton from './EmotionButton'
+import MoreButton from './MoreButton'
+import MsgInput from './MsgInput'
+
 var React=require('react');
-var EmotionButton=require('./EmotionButton');
-var MoreButton=require('./MoreButton');
-var MsgInput=require('./MsgInput');
 
-
-
-class InputBar extends React.Component{
+export default class InputBar extends React.Component{
     constructor(props){
         super(props);
         this.state={msgList:[],send:false}
@@ -21,12 +21,16 @@ class InputBar extends React.Component{
         var time=dateTime.toTimeString();
         var msg={
             forward:'send',
+            type:'text',
             content:_msg.trim(),
             timeStamp:dateTime.getTime().toString(),
             headImg:'material/img/headImg/hj.jpg',
             time:time.split(':')[0]+":"+time.split(':')[1],
             date:(dateTime.getMonth()+1)+"月"+dateTime.getDate()+"日"
         }
+
+
+        //
         if(this.state.send){
             this.props.send(msg);
             this.setState({send:!this.state.send})
@@ -42,7 +46,7 @@ class InputBar extends React.Component{
         str = str.replace(/\</g,'&lt;');
         str = str.replace(/\>/g,'&gt;');
         str = str.replace(/\n/g,'<br/>');
-        str = str.replace(/\[em_([0-9]*)\]/g,'<img src="/assets/material/img/QQEmotion/$1.gif" border="0" />');
+        // str = str.replace(/\[em_([0-9]*)\]/g,'<img src="/assets/material/img/QQEmotion/$1.gif" border="0" />');
         return str;
     }
 
@@ -50,12 +54,11 @@ class InputBar extends React.Component{
         return(
             <div className="sendMsgBar">
                 <MsgInput send={this.send} />
-
                 <EmotionButton/>
                 <MoreButton/>
             </div>
         )
     }
+
 }
 
-module.exports=InputBar;
