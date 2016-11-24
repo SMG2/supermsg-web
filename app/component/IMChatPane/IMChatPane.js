@@ -3,8 +3,8 @@
  */
 
 import {connect} from 'react-redux'
-import {VIEW_CHAT} from '../../actions/chatActionType'
-import {sendMsgToG,sendMsgToP,showChatMsg} from '../../actions/chatAction'
+import {VIEW_CHAT} from '../../actions/types/chat/chatActionType'
+import {sendMsgToG,sendMsgToP,showChatMsg} from '../../actions/chatActions/chatAction'
 
 
 import ChatPane from './ChatPane/ChatPane'

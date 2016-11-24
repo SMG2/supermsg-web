@@ -3,7 +3,7 @@
  */
 
 import {combineReducers} from 'redux'
-import {SEND_MSG_TO_G,SEND_MSG_TO_P,RECEIVE_MSG_FROM_G,RECEIVE_MSG_FROM_P,SET_VIEW_CHAT} from '../actions/chatActionType'
+import {SEND_MSG_TO_G,SEND_MSG_TO_P,RECEIVE_MSG_FROM_G,RECEIVE_MSG_FROM_P,SET_VIEW_CHAT} from '../actions/types/chat/chatActionType'
 
 function viewChatMsg(state=[],action){
     switch (action.type){

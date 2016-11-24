@@ -2,7 +2,7 @@
  * Created by yangbingxun on 2016/11/21.
  */
 
-import {SEND_MSG_TO_G,SEND_MSG_TO_P,RECEIVE_MSG_FROM_P,SET_VIEW_CHAT} from './chatActionType'
+import {SEND_MSG_TO_G,SEND_MSG_TO_P,RECEIVE_MSG_FROM_P,SET_VIEW_CHAT} from '../types/chat/chatActionType'
 
 export function sendMsgToP(msg){
     /*
