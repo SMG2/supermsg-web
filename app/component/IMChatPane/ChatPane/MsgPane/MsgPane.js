@@ -26,7 +26,7 @@ export default class MsgPane extends React.Component{
         if(this.props.msgList instanceof Array )
             this.props.msgList.forEach((msg,index)=> {
                     msgListBlock.push(
-                        <SingleMsg key={this.props.id+""+index} forward={msg.forward} content={msg.content}  headImg={msg.headImg} time={msg.time} date={msg.date}/>
+                        <SingleMsg key={this.props.id+""+index} forward={msg.forward} content={msg.content}  headImg={msg.headImg} time={msg.time} date={msg.date} read={msg.read}/>
                     )
             });
         if(msgListBlock.length!=0){

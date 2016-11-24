@@ -18,12 +18,13 @@ export default class SingleMsg extends React.Component{
         var msgDiv;
         switch (this.props.forward){
             case 'send':
+                // console.log(this.props.read)
                 msgDiv=(
                     <div className="send singleMsg ">
-                        <div className="head_img animate bounceInUp">
+                        <div className={this.props.read?"head_img":"head_img animate bounceInUp"}>
                             <img src={this.props.headImg}/>
                         </div>
-                        <div className="animate bounceInUp ">
+                        <div className={this.props.read?"":"animate bounceInUp"}>
                             <div className="msg_content ">
                                 <div className="content">
                                     <div  dangerouslySetInnerHTML={this.getContentHtml(this.props.content)} />
@@ -37,10 +38,10 @@ export default class SingleMsg extends React.Component{
             case 'receive':
                 msgDiv=(
                     <div className="receive singleMsg ">
-                        <div className="head_img animate bounceInUp">
+                        <div className={this.props.read?"head_img":"head_img animate bounceInUp"}>
                             <img src={this.props.headImg}/>
                         </div>
-                        <div className="animate bounceInUp ">
+                        <div className={this.props.read?"":"animate bounceInUp"}>
                             <div className="msg_content ">
                                 <div className="content">
                                     <div  dangerouslySetInnerHTML={this.getContentHtml(this.props.content)} />

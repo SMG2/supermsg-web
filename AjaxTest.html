@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax 测试</title>
+</head>
+<body>
+<div id="f"></div>
+<script>
+    function createHeader(){
+        var Nonce='123'//Math.floor(Math.random()*100000).toString();
+        var TimeStamp='1477985732446'//new Date().getTime().toString();
+        var Userid='1033614108438';
+        var Signature='744C2B5464CDF7BA9BAF81C78CBD350E7F31BA24';
+        return{
+            Nonce:Nonce,
+            TimeStamp:TimeStamp,
+            Userid:Userid,
+            Signature:Signature
+        }
+    }
+    function GetData(url){
+        var xhr=new XMLHttpRequest();
+        var header=createHeader();
+        xhr.open("GET",url,true);
+        xhr.setRequestHeader('nonce',header.Nonce)
+        xhr.setRequestHeader('timestamp',header.TimeStamp)
+        xhr.setRequestHeader('userid',header.Userid)
+        xhr.setRequestHeader('signature',header.Signature)
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4){
+                if(xhr.status==200){
+                    document.getElementById('f').innerHTML='<h1>'+xhr.responseText+'</h1>'
+                }
+            }
+        }
+        xhr.send(null);
+    }
+//    GetData('http://120.27.49.173:8080/v1.0/schools');
+    GetData('http://localhost:8081');
+</script>
+</body>
+</html>

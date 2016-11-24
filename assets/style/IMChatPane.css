@@ -155,7 +155,7 @@
 .sendMsgBar{
     display: block;
     width:100%;
-    height: 55px;
+    height: 65px;
     background-color: #efefef;
     position: relative;
 }
