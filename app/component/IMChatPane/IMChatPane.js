@@ -8,7 +8,7 @@ import {sendMsgToG,sendMsgToP,showChatMsg,read} from '../../actions/chatActions/
 
 
 import ChatPane from './ChatPane/ChatPane'
-import ChatGroup from './ChatGroup/ChatGroup'
+import ChatMenu from './ChatMenu/ChatMenu'
 
 var React = require('react');
 
@@ -68,10 +68,10 @@ class IMChatPane extends React.Component{
         const {dispatch,msgList,viewChat,id} = this.props;
         return(
             <div>
-                <section id="ChatGroup" className="ChatGroup">
-                    <ChatGroup test1={()=>this.change1(dispatch)} test2={()=>this.change2(dispatch)} />
+                <section id="ChatGroup" className="ChatMenu">
+                    <ChatMenu/>
                 </section><section id="ChatPane" className="ChatPane">
-                    {id?<ChatPane msgList={msgList}  send={msg=>this.send(msg,viewChat,id,dispatch)} id={id}/> :<div/>}
+                    {id?<ChatPane msgList={msgList}  send={msg=>this.send(msg,viewChat,id,dispatch)} id={id}/> :<div className="Pane"/>}
                     </section>
             </div>
         )
@@ -110,3 +110,27 @@ function select(state){
 }
 
 export default connect(select)(IMChatPane);
+
+class Black extends React.Component{
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+        var css={
+            display:'block',
+            backgroundColor:'red',
+            width:'200px',
+            height:'200px',
+            position:'absolute',
+            left:0, top:0,bottom:0,right:0,
+            margin:'auto'
+        }
+        return(
+            <div style={css}>
+                <i className=" icon-plus icon-5x"/>
+                {'点击创建聊天'}
+            </div>
+        )
+    }
+}

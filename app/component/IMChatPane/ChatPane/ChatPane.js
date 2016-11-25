@@ -19,7 +19,7 @@ export default class ChatPane extends React.Component {
 
     render(){
         return (
-            <div>
+            <div className="Pane">
                 <div id="showMsg" className="msgContent">
                     {typeof this.props.msgList=='object'&&this.props.msgList instanceof Array?<MsgPane msgList={this.props.msgList} id={this.props.id}/>:<div/>}
                 </div>
@@ -28,3 +28,5 @@ export default class ChatPane extends React.Component {
         )
     }
 }
+
+
