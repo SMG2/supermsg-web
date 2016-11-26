@@ -1,7 +1,7 @@
 
 /*ChatPane*/
 .ChatPane{
-    width: 80%;
+    width: 75%;
     display: inline-block;
     overflow: scroll;
     position: relative;
@@ -386,27 +386,37 @@
 
 /*ChatGroup*/
 .ChatMenu{
-    width:20%;
+    width:25%;
     display: inline-block;
     overflow: scroll;
-    /*background-color: cornsilk;*/
     position: relative;
 }
-.slideMenu{
+.ChatMenuPane{
     display: block;
-    width:60px;
-    height: 650px;
-    /*background-color: #efefef;*/
+    width:63px;
+    height: 652px;
     top: 0;bottom:0;right: 1%;
     margin: auto;
     position: absolute;
-    border-radius: 5px;
+    overflow: hidden;
+    vertical-align: top;
+    transition: all 0.5s;
+}
+.slideMenu{
+    display: inline-block;
+    width:60px;
+    height: 650px;
+    margin: auto;
+    border-radius: 5px 0 0 5px;
     overflow: hidden;
     border: 1px solid #bcbcbc;
+    vertical-align: top;
+    transition: all 0.5s;
 }
+
 .menuBtn{
     display: block;
-    height: 80px;
+    height: 70px;
     width:60px;
     border-bottom:1px solid #bcbcbc;
     position: relative;
@@ -414,10 +424,9 @@
     color: #444444;
 
 }
-.menuBtn:hover{
+.group:hover,.p2p:hover{
     background-color: #eeeeee;
 }
-
 .menuBtn i{
     width: 50px;
     height: 50px;
@@ -429,8 +438,91 @@
 
 }
 
+.TalkerMenuPane{
+    display: inline-block;
+    width: 0px;
+    height: 650px;
+    border-top: 1px solid #bcbcbc;
+    border-right: 1px solid #bcbcbc;
+    border-bottom: 1px solid #bcbcbc;
+    background-color: #ffffcc;
+    border-radius: 0 5px 5px 0;
+    overflow: scroll;
+    transition: all 0.5s;
+}
 
-/*clearfix*/
+.singleTalker{
+    display: block;
+    width:240px;
+    height:71px;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.TalkerMenuPane .head_img{
+    display: inline-block;
+    width:70px;
+    height:70px;
+    position: relative;
+    vertical-align: top;
+}
+.TalkerMenuPane .head_img img{
+    object-fit: fill;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+
+    position: absolute;
+    left:0;top:0;bottom:0;right:0;
+    margin:auto;
+}
+
+.TalkerMenuPane .info{
+    display: inline-block;
+    width:170px;
+    height:70px;
+    /*background-color: goldenrod;*/
+    position: relative;
+    vertical-align: top;
+    border-bottom: 1px solid #bcbcbc;
+
+}
+.TalkerMenuPane .info h1{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.TalkerMenuPane .info h2{
+    font-size:10px;
+    padding-right: 5px;
+    text-align: end;
+}
+
+.singleTalker .labelBottom{
+    display: block;
+    width:0;
+    height: 70px;
+    position: absolute;
+    background-color: #eeeeee;
+    left: 0;top:0;bottom:0;right: 0;
+    margin: auto;
+    transition: all 0.3s;
+    z-index: 0;
+}
+.singleTalker .labelTop{
+    display: block;
+    width:240px;
+    height: 70px;
+    position: absolute;
+    background-color: transparent;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+
+    /*clearfix*/
 .clearfix:after{
     visibility: hidden;
     display: block;

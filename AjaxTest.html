@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>ajax 测试</title>
-    <link rel="stylesheet" href="assets/style/font-awesome.css">
+
 </head>
 <body>
-<div id="f"></div>
+<div id="f" style="width: 80px;height: 100px;display: block;overflow: hidden;position: relative">
+    <div style="display: inline-block;width: 50px;height: 80px;background-color: #00AA88">
+
+    </div><div style="display: inline-block;width: 50px;height: 80px;background-color: #2f6f9f">
+
+</div>
+</div>
+
 <script>
     function createHeader(){
         var Nonce='123'//Math.floor(Math.random()*100000).toString();
@@ -37,8 +44,10 @@
         }
         xhr.send(null);
     }
-    GetData('http://120.27.49.173:8080/v1.0/schools');
+//    GetData('http://120.27.49.173:8080/v1.0/schools');
 //    GetData('http://localhost:8081');
+
+
 </script>
 </body>
 </html>

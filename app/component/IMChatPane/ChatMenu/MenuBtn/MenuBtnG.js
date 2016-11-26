@@ -11,11 +11,10 @@ export default class MenuBtnG extends React.Component{
 
     render(){
         return(
-            <div className="menuBtn">
+            <div className="menuBtn group" onClick={()=>(this.props.ChangeChat('GROUP'))}>
                 <div>
                     <i className="icon-group icon-3x"></i>
                 </div>
-
             </div>
         )
     }

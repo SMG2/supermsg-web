@@ -10,7 +10,7 @@ export default class MenuBtnP extends React.Component{
 
     render(){
         return(
-            <div className="menuBtn">
+            <div className="menuBtn p2p" onClick={()=>(this.props.ChangeChat('P2P'))} >
                 <div>
                     <i className="icon-user icon-3x"></i>
                 </div>
