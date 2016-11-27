@@ -4,7 +4,7 @@
 
 import MenuBtnG from './MenuBtn/MenuBtnG'
 import MenuBtnP from './MenuBtn/MenuBtnP'
-import TalkerMenu from './MenuPane/TalkerMenu'
+// import TalkerMenu from './MenuPane/TalkerMenu'
 
 var React = require('react');
 
@@ -20,13 +20,16 @@ export default class ChatGroup extends React.Component{
     }
 
     render(){
+        const {talkers}=this.props;
+        var TalkerMenu=this.props.children;
         return(
             <div className="ChatMenuPane">
                 <div className="slideMenu" id="slideMenu">
                     <MenuBtnG ChangeChat={this.changeChat}/>
                     <MenuBtnP ChangeChat={this.changeChat}/>
                 </div>
-                <TalkerMenu/>
+                {/*<TalkerMenu/>*/}
+                <TalkerMenu talkers={talkers} />
             </div>
 
         )

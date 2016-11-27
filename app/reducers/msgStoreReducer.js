@@ -127,8 +127,6 @@ function readAll(state=[],action){
     }
 }
 
-const superMsg=combineReducers({
-    viewChatMsg,chatMsg
-});
+var msgStoreReducers={viewChatMsg,chatMsg}
 
-export default superMsg;
+export default msgStoreReducers

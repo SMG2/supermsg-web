@@ -67,7 +67,7 @@ class IMChatPane extends React.Component{
 
         const {dispatch,msgList,viewChat,id} = this.props;
         return(
-            <div>
+            <div className="bodyPane">
                 <section id="ChatGroup" className="ChatMenu">
                     <ChatMenu/>
                 </section><section id="ChatPane" className="ChatPane">
