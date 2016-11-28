@@ -2,20 +2,30 @@
  * Created by yangbingxun on 2016/11/21.
  */
 
-import {combineReducers} from 'redux'
-import {SEND_MSG_TO_G,SEND_MSG_TO_P,RECEIVE_MSG_FROM_G,RECEIVE_MSG_FROM_P,SET_VIEW_CHAT,VIEW_CHAT,READ} from '../actions/types/chat/chatActionType'
+import {
+    SEND_MSG_TO_G,
+    SEND_MSG_TO_P,
+    RECEIVE_MSG_FROM_G,
+    RECEIVE_MSG_FROM_P,
+    SET_VIEW_CHAT,
+    VIEW_CHAT,
+    READ,
+    CHAT_OBJECT_LIST
+} from '../actions/types/chat/chatActionType'
 
-function viewChatMsg(state=[],action){
+//store
+//存储展示聊天信息界面
+export function viewChatMsg(state=[],action){
     switch (action.type){
         case SET_VIEW_CHAT:
             return action.view;
             break;
         default:
-            return [];
+            return state;
     }
 }
-
-function chatMsg(state=[],action){
+//存储群聊，个人聊天，消息阅读设置
+export function chatMsg(state=[],action){
     if(!state.group||typeof state.group !='object') state.group={};
     if(!state.p2p ||typeof state.p2p !='object') state.p2p={};
     switch (action.view){
@@ -35,9 +45,44 @@ function chatMsg(state=[],action){
     }
 
 }
+//存储聊天对象列表
+export function listOfChatObject(state=[],action){
+    if(!state.glist) state.glist=[];
+    if(!state.plist) state.plist=[];
+    // console.log(action)
+    switch (action.type){
+        case CHAT_OBJECT_LIST.GROUP:
+            action.infos.map(info=>{
+                state.glist.push({
+                    id:info.id,
+                    headImg:info.headImg,
+                    name:info.name,
+                    grade:info.grade
+                })
+            })
+            return state;
+            break;
+        case CHAT_OBJECT_LIST.P2P:
+            action.infos.map(info=>{
+                state.plist.push({
+                    id:info.id,
+                    headImg:info.headImg,
+                    name:info.name,
+                    grade:info.grade,
+                    stuNum:info.stuNum
+                })
+            })
+            return state;
+            break;
+        default:
+            return state;
+    }
+}
 
+
+
+//辅助
 function groupMsg(group=[],action){
-    // console.log(group)
     switch (action.type){
         case SEND_MSG_TO_G:
             if(!group[action.msg.groupid]) group[action.msg.groupid]=[];
@@ -52,7 +97,6 @@ function groupMsg(group=[],action){
             }
 
             group[action.msg.groupid].push(a);
-            // console.log(group)
             return group;
             break;
         case RECEIVE_MSG_FROM_G:
@@ -74,7 +118,6 @@ function groupMsg(group=[],action){
             return group;
     }
 }
-
 function p2pMsg(p2p=[],action) {
 
     switch(action.type) {
@@ -111,7 +154,6 @@ function p2pMsg(p2p=[],action) {
             return p2p;
     }
 }
-
 function readAll(state=[],action){
     switch(action.type){
         case VIEW_CHAT.GROUP_CHAT:
@@ -126,7 +168,3 @@ function readAll(state=[],action){
             return state;
     }
 }
-
-var msgStoreReducers={viewChatMsg,chatMsg}
-
-export default msgStoreReducers

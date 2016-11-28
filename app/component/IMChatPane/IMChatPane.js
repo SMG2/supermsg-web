@@ -4,7 +4,12 @@
 
 import {connect} from 'react-redux'
 import {VIEW_CHAT} from '../../actions/types/chat/chatActionType'
-import {sendMsgToG,sendMsgToP,showChatMsg,read} from '../../actions/chatActions/chatAction'
+import {
+    sendMsgToG,
+    sendMsgToP,
+    showChatMsg,
+    read
+} from '../../actions/chatActions/chatAction'
 
 
 import ChatPane from './ChatPane/ChatPane'
@@ -12,6 +17,7 @@ import ChatMenu from './ChatMenu/ChatMenu'
 
 var React = require('react');
 
+var NOWID='';//现在聊天的id
 
 class IMChatPane extends React.Component{
     constructor(props){
@@ -29,49 +35,60 @@ class IMChatPane extends React.Component{
             timeStamp:msg.timeStamp,
             read:false
         }
+
         switch (viewChat){
             case VIEW_CHAT.GROUP_CHAT:
                 msg_.groupid=id;
                 msg_.view=VIEW_CHAT.GROUP_CHAT;
                 dispatch(sendMsgToG(msg_))
-                dispatch(showChatMsg({type:VIEW_CHAT.GROUP_CHAT,id:id}));
+                dispatch(showChatMsg({type:VIEW_CHAT.GROUP_CHAT}));
                 setTimeout(()=>{
-                    dispatch(read(VIEW_CHAT.GROUP_CHAT,id))
-                    dispatch(showChatMsg({type:VIEW_CHAT.GROUP_CHAT,id:id}));
+                    dispatch(read(VIEW_CHAT.GROUP_CHAT,NOWID))
+                    dispatch(showChatMsg({type:VIEW_CHAT.GROUP_CHAT}));
                 },1000)
                 break;
             case VIEW_CHAT.P2P_CHAT:
                 msg_.userid=id;
                 msg_.view=VIEW_CHAT.P2P_CHAT;
                 dispatch(sendMsgToP(msg_))
-                dispatch(showChatMsg({type:VIEW_CHAT.P2P_CHAT,id:id}));
+                dispatch(showChatMsg({type:VIEW_CHAT.P2P_CHAT}));
                 setTimeout(()=>{
                     dispatch(read(VIEW_CHAT.P2P_CHAT,id));
-                    dispatch(showChatMsg({type:VIEW_CHAT.P2P_CHAT,id:id}));
+                    dispatch(showChatMsg({type:VIEW_CHAT.P2P_CHAT}));
                 },1000)
                 break;
         }
-
-
     }
 
-    change1(dispatch){
-        dispatch(showChatMsg({type:VIEW_CHAT.GROUP_CHAT,id:'000000'}));
-    }
-    change2(dispatch){
-        dispatch(showChatMsg({type:VIEW_CHAT.GROUP_CHAT,id:'000001'}));
+
+
+    componentDidMount(){
+        let css={'height':$(window).height()-80+"px"}
+        $('.bodyPane').css(css);
     }
 
+    changeChat(dispatch,viewChat,id){
+        NOWID=id;
+        dispatch(showChatMsg({type:viewChat}));
+    }
 
     render(){
-
-        const {dispatch,msgList,viewChat,id} = this.props;
+        const {dispatch,msgList,viewChat,chatList} = this.props;
         return(
-            <div className="bodyPane">
-                <section id="ChatGroup" className="ChatMenu">
-                    <ChatMenu/>
+            <div className="bodyPane" >
+                <section className="ChatMenu">
+                    <ChatMenu
+                        changeChat={(id_)=>{NOWID=id_;this.changeChat(dispatch,viewChat,id_)}}
+                        chatList={chatList}
+                    />
                 </section><section id="ChatPane" className="ChatPane">
-                    {id?<ChatPane msgList={msgList}  send={msg=>this.send(msg,viewChat,id,dispatch)} id={id}/> :<div className="Pane"/>}
+                    {
+                        NOWID.length!=0?<ChatPane
+                            msgList={msgList}
+                            send={msg=>this.send(msg,viewChat,NOWID,dispatch)}
+                            id={NOWID}/>
+                        :<div className="Pane"/>
+                    }
                     </section>
             </div>
         )
@@ -87,25 +104,24 @@ class IMChatPane extends React.Component{
  */
 
 function selectViewChatMsg(chatMsg,viewChatMsg){
-    switch (viewChatMsg.type){
-        case VIEW_CHAT.GROUP_CHAT:
-            // console.log(chatMsg.group[viewChatMsg.id])
-            return typeof chatMsg.group[viewChatMsg.id] !=='undefined'?chatMsg.group[viewChatMsg.id]:[];
-            break;
-        case VIEW_CHAT.P2P_CHAT:
-            return typeof chatMsg.p2p[viewChatMsg.id] !=='undefined'?chatMsg.p2p[viewChatMsg.id]:[];
-            break;
-        default:
-            return [];
-            break;
-    }
+    if(viewChatMsg)
+        switch (viewChatMsg.type){
+            case VIEW_CHAT.GROUP_CHAT:
+                return typeof chatMsg.group[NOWID] !=='undefined'?chatMsg.group[NOWID]:[];
+                break;
+            case VIEW_CHAT.P2P_CHAT:
+                return typeof chatMsg.p2p[NOWID] !=='undefined'?chatMsg.p2p[NOWID]:[];
+                break;
+            default:
+                return [];
+                break;
+        }
 }
 
 function select(state){
     return{
         msgList:selectViewChatMsg(state.chatMsg,state.viewChatMsg),
-        viewChat:state.viewChatMsg.type,
-        id:state.viewChatMsg.id
+        viewChat:state.viewChatMsg?state.viewChatMsg.type:{}
     }
 }
 

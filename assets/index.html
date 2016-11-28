@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
-    <link rel="stylesheet" href="style/IMChatPane.css">
-    <link rel="stylesheet" href="lib/Font-Awesome-3.2.1/css/font-awesome.css">
+    <link rel="stylesheet" href="http://localhost:8081/style/IMChatPane.css">
+    <link rel="stylesheet" href="http://localhost:8081/lib/Font-Awesome-3.2.1/css/font-awesome.css">
     <style>
-        body{
+        body,#body{
             margin: 0;
             padding: 0;
             top:0;
             left:0;
             min-width: 1196px;
-            overflow: scroll;
             width:100%;
             position: relative;
+            overflow-y: hidden;
+            overflow-x: scroll;;
         }
         .MainNav{
             display: block;
@@ -35,22 +36,25 @@
         .bodyPane{
             position: relative;
             width: 100%;
+            /*height: 100%;*/
             overflow: scroll;
-            background-color: #2f6f9f;
+            /*background-color: #2f6f9f;*/
         }
     </style>
 </head>
 
 <body >
+<div id="body">
 
-<div class="MainNav" ></div>
-<div class="SecondNav"></div>
-<section class="bodyPane"></section>
+</div>
+<!--<div class="MainNav" ></div>-->
+<!--<div class="SecondNav"></div>-->
+<!--<section class="bodyPane"></section>-->
 
 
 
-<script src="lib/Jquery/jquery_2.1.4.js"></script>
-<script src="lib/Jquery/jquery.qqFace.js"></script>
+<script src="http://localhost:8081/lib/Jquery/jquery_2.1.4.js"></script>
+<script src="http://localhost:8081/lib/Jquery/jquery.qqFace.js"></script>
 <script>
     $(function(){
         var clientHeight=$(window).height();
@@ -61,17 +65,20 @@
         $('body').css({
             height:clientHeight+'px',
         })
-        $('.bodyPane').css(css);
+        $('#body').css({
+            height:clientHeight+'px',
+        })
+        console.log($('.bodyPane').css(css).css('height'));
 //        $('#ChatPane').css(css);
 //        $('#ChatGroup').css(css);
 
     })
 
 </script>
-<script src="lib/SH1.js"></script>
+<script src="http://localhost:8081/lib/SH1.js"></script>
 <!--<script src="js/connectServer.js"></script>-->
 <script src="http://localhost:8081/webpack-dev-server.js"></script>
-<script src="bundle.js"></script>
+<script src="http://localhost:8081/bundle.js"></script>
 
 </body>
 </html>

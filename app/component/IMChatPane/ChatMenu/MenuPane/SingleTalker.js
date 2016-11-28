@@ -24,10 +24,10 @@ export default class SingleTalker extends React.Component{
                 <div className="labelTop" onMouseEnter={(e)=>{this.mouseEnter(e)}} onMouseOut={(e)=>this.mouseOut(e)}/>
                 <div className="labelBottom" />
                 <div className="head_img">
-                    <img src={this.props.imgUrl}/>
+                    <img src={this.props.headImg}/>
                 </div>
                 <div className="info">
-                    <h1>{this.props.cname}</h1>
+                    <h1>{this.props.name}</h1>
                     <h2>{this.props.grade}</h2>
                 </div>
             </div>

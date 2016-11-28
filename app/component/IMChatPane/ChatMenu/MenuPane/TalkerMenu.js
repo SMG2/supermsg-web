@@ -11,19 +11,23 @@ export default class TalkerMenu extends React.Component{
         super(props)
     }
 
+    componentDidMount(){
+        setTimeout(()=>{$('#talkerMenuPane').css({width:'240px'})},0)
+    }
+
     render(){
         var talkerBlock=[];
-        this.props.talkers.map(talker=>{
-            talkerBlock.push(<SingleTalker imgUrl={talker.headImg} cname={talker.cname} grade={talker.grade}/>)
-        })
-
+        this.props.talkerList.map(talker=>{
+            if(talker.stuNum){
+                talkerBlock.push(<SingleTalker key={"p"+talker.id} headImg={talker.headImg} name={talker.name} grade={talker.grade}/>)
+            }else{
+                talkerBlock.push(<SingleTalker key={"g"+talker.id} headImg={talker.headImg} name={talker.name} grade={talker.grade}/>)
+            }
+                })
         return(
             <div id="talkerMenuPane" className="TalkerMenuPane">
-                {/*{<SingleTalker imgUrl="material/img/headImg/hj.jpg" cname="软件工程四班" grade="2014级计算机学院" />}*/}
-                {/*{<SingleTalker imgUrl="material/img/headImg/hj.jpg" cname="软件工程四班" grade="2014级计算机学院"/>}*/}
-                {/*{<SingleTalker imgUrl="material/img/headImg/hj.jpg" cname="软件工程四班" grade="2014级计算机学院"/>}*/}
-                {/*{<SingleTalker imgUrl="material/img/headImg/hj.jpg" cname="软件工程四班" grade="2014级计算机学院"/>}*/}
                 {talkerBlock}
+                {/*{talkerBlock.length!=0?talkerBlock:<div className="labelTop"/>}*/}
             </div>
         )
     }
