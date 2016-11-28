@@ -9,10 +9,18 @@ import {
     SET_VIEW_CHAT,
     READ,
     CHAT_OBJECT_LIST,
+    SET_THIS_CHAT_ID
 } from '../types/chat/chatActionType'
 
 
 //聊天消息
+export function setChatId(id){
+    return{
+        type:SET_THIS_CHAT_ID,
+        id:id
+    }
+}
+
 export function sendMsgToP(msg){
     /*
 * msg={

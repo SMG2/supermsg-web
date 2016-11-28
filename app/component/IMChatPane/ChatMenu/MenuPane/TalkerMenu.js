@@ -19,15 +19,14 @@ export default class TalkerMenu extends React.Component{
         var talkerBlock=[];
         this.props.talkerList.map(talker=>{
             if(talker.stuNum){
-                talkerBlock.push(<SingleTalker key={"p"+talker.id} headImg={talker.headImg} name={talker.name} grade={talker.grade}/>)
+                talkerBlock.push(<SingleTalker key={"p"+talker.id} headImg={talker.headImg} name={talker.name} grade={talker.grade} id={talker.id} stuNum={talker.stuNum}/>)
             }else{
-                talkerBlock.push(<SingleTalker key={"g"+talker.id} headImg={talker.headImg} name={talker.name} grade={talker.grade}/>)
+                talkerBlock.push(<SingleTalker key={"g"+talker.id} headImg={talker.headImg} name={talker.name} grade={talker.grade} id={talker.id} />)
             }
                 })
         return(
             <div id="talkerMenuPane" className="TalkerMenuPane">
                 {talkerBlock}
-                {/*{talkerBlock.length!=0?talkerBlock:<div className="labelTop"/>}*/}
             </div>
         )
     }

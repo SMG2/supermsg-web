@@ -3,21 +3,19 @@
  */
 
 import {connect} from 'react-redux'
-import {VIEW_CHAT} from '../../actions/types/chat/chatActionType'
+import {VIEW_CHAT} from '../../reduxComponent/actions/types/chat/chatActionType'
+import {browserHistory} from 'react-router'
 import {
     sendMsgToG,
     sendMsgToP,
-    showChatMsg,
     read
-} from '../../actions/chatActions/chatAction'
+} from '../../reduxComponent/actions/chatActions/chatAction'
 
 
 import ChatPane from './ChatPane/ChatPane'
 import ChatMenu from './ChatMenu/ChatMenu'
 
 var React = require('react');
-
-var NOWID='';//现在聊天的id
 
 class IMChatPane extends React.Component{
     constructor(props){
@@ -41,52 +39,40 @@ class IMChatPane extends React.Component{
                 msg_.groupid=id;
                 msg_.view=VIEW_CHAT.GROUP_CHAT;
                 dispatch(sendMsgToG(msg_))
-                dispatch(showChatMsg({type:VIEW_CHAT.GROUP_CHAT}));
                 setTimeout(()=>{
-                    dispatch(read(VIEW_CHAT.GROUP_CHAT,NOWID))
-                    dispatch(showChatMsg({type:VIEW_CHAT.GROUP_CHAT}));
+                    dispatch(read(VIEW_CHAT.GROUP_CHAT,id));
                 },1000)
+                browserHistory.push('/chat/group/'+id) //通过push路由 重新渲染当前页面 因为redux不能进行自动渲染
                 break;
             case VIEW_CHAT.P2P_CHAT:
                 msg_.userid=id;
                 msg_.view=VIEW_CHAT.P2P_CHAT;
                 dispatch(sendMsgToP(msg_))
-                dispatch(showChatMsg({type:VIEW_CHAT.P2P_CHAT}));
                 setTimeout(()=>{
                     dispatch(read(VIEW_CHAT.P2P_CHAT,id));
-                    dispatch(showChatMsg({type:VIEW_CHAT.P2P_CHAT}));
                 },1000)
+                browserHistory.push('/chat/p2p/'+id)
                 break;
         }
     }
-
-
 
     componentDidMount(){
         let css={'height':$(window).height()-80+"px"}
         $('.bodyPane').css(css);
     }
 
-    changeChat(dispatch,viewChat,id){
-        NOWID=id;
-        dispatch(showChatMsg({type:viewChat}));
-    }
-
     render(){
-        const {dispatch,msgList,viewChat,chatList} = this.props;
+        const {dispatch,msgList,viewChat,id} = this.props;
         return(
             <div className="bodyPane" >
                 <section className="ChatMenu">
-                    <ChatMenu
-                        changeChat={(id_)=>{NOWID=id_;this.changeChat(dispatch,viewChat,id_)}}
-                        chatList={chatList}
-                    />
+                    <ChatMenu/>
                 </section><section id="ChatPane" className="ChatPane">
                     {
-                        NOWID.length!=0?<ChatPane
+                        typeof id=='string'?<ChatPane
                             msgList={msgList}
-                            send={msg=>this.send(msg,viewChat,NOWID,dispatch)}
-                            id={NOWID}/>
+                            send={(msg)=>{this.send(msg,viewChat,id,dispatch)}}
+                            id={id}/>
                         :<div className="Pane"/>
                     }
                     </section>
@@ -95,22 +81,14 @@ class IMChatPane extends React.Component{
     }
 }
 
-
-/*
- viewChatMsg={
-    type:
-    id:
-}
- */
-
-function selectViewChatMsg(chatMsg,viewChatMsg){
+function selectViewChatMsg(chatMsg,viewChatMsg,id){
     if(viewChatMsg)
         switch (viewChatMsg.type){
             case VIEW_CHAT.GROUP_CHAT:
-                return typeof chatMsg.group[NOWID] !=='undefined'?chatMsg.group[NOWID]:[];
+                return typeof chatMsg.group[id] !=='undefined'?chatMsg.group[id]:[];
                 break;
             case VIEW_CHAT.P2P_CHAT:
-                return typeof chatMsg.p2p[NOWID] !=='undefined'?chatMsg.p2p[NOWID]:[];
+                return typeof chatMsg.p2p[id] !=='undefined'?chatMsg.p2p[id]:[];
                 break;
             default:
                 return [];
@@ -120,33 +98,10 @@ function selectViewChatMsg(chatMsg,viewChatMsg){
 
 function select(state){
     return{
-        msgList:selectViewChatMsg(state.chatMsg,state.viewChatMsg),
-        viewChat:state.viewChatMsg?state.viewChatMsg.type:{}
+        msgList:selectViewChatMsg(state.chatMsg,state.viewChatMsg,state.thisChatId),
+        viewChat:state.viewChatMsg?state.viewChatMsg.type:{},
+        id:state.thisChatId
     }
 }
 
 export default connect(select)(IMChatPane);
-
-class Black extends React.Component{
-    constructor(props){
-        super(props);
-    }
-
-    render(){
-        var css={
-            display:'block',
-            backgroundColor:'red',
-            width:'200px',
-            height:'200px',
-            position:'absolute',
-            left:0, top:0,bottom:0,right:0,
-            margin:'auto'
-        }
-        return(
-            <div style={css}>
-                <i className=" icon-plus icon-5x"/>
-                {'点击创建聊天'}
-            </div>
-        )
-    }
-}

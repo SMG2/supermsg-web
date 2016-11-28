@@ -2,9 +2,9 @@
  * Created by yangbingxun on 2016/11/27.
  */
 
-import {Link,browserHistory} from 'react-router'
+// import {Link,browserHistory} from 'react-router'
 import {connect} from 'react-redux'
-import {setP2PList,setGroupList} from '../../../actions/chatActions/chatAction'
+import {setP2PList,setGroupList} from '../../../reduxComponent/actions/chatActions/chatAction'
 
 var React=require('react')
 

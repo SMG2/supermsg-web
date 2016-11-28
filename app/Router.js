@@ -15,9 +15,11 @@ export default function Routers(props){
             <Route path="/" component={MainPane}>
                 <Route path="chat" component={SecondPane}>
                     <IndexRoute component={IMChatPane}/>
-                    <Route path="test" component={(props)=>{return(<div>afjgvchaj</div>)}}/>
-                    <Route path="**/:id" component={IMChatPane}/>
+                    <Route path="group(/:id)" component={IMChatPane}/>
+                    <Route path="p2p(/:id)" component={IMChatPane}/>
                 </Route>
+
+                <Route path={'**'} component={(props)=>{return(<div>路由错误！！</div>)}}/>
             </Route>
         </Router>
     )

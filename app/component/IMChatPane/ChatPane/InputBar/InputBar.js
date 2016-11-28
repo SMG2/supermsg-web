@@ -24,7 +24,7 @@ export default class InputBar extends React.Component{
             type:'text',
             content:_msg.trim(),
             timeStamp:dateTime.getTime().toString(),
-            headImg:'material/img/headImg/hj.jpg',
+            headImg:'http://localhost:8081/material/img/headImg/hj.jpg',
             time:time.split(':')[0]+":"+time.split(':')[1],
             date:(dateTime.getMonth()+1)+"月"+dateTime.getDate()+"日"
         }

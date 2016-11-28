@@ -2,9 +2,9 @@
  * Created by yangbingxun on 2016/11/19.
  */
 
-import {VIEW_CHAT} from '../../../actions/types/chat/chatActionType'
+import {VIEW_CHAT} from '../../../reduxComponent/actions/types/chat/chatActionType'
 import {connect} from 'react-redux'
-import {showChatMsg} from '../../../actions/chatActions/chatAction'
+import {showChatMsg} from '../../../reduxComponent/actions/chatActions/chatAction'
 
 import MenuBtnG from './MenuBtn/MenuBtnG'
 import MenuBtnP from './MenuBtn/MenuBtnP'

@@ -20,10 +20,9 @@ export default class MsgPane extends React.Component{
         this.toNewMsg(document.getElementById('showMsg'));
     }
 
-
-    toNewMsg(node,offset){
-        node.scrollTop=node.scrollHeight-offset;
+    toNewMsg(node){
         console.log(node.scrollTop,node.scrollHeight)
+        node.scrollTop=node.scrollHeight;
     }
 
     render() {

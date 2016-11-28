@@ -3,10 +3,13 @@
  */
 
 
+import {Link} from 'react-router'
+import {connect} from 'react-redux'
+import {setChatId} from '../../../../reduxComponent/actions/chatActions/chatAction'
 
 var React=require('react');
 
-export default class SingleTalker extends React.Component{
+class SingleTalker extends React.Component{
     constructor(props){
         super(props);
     }
@@ -18,10 +21,22 @@ export default class SingleTalker extends React.Component{
         $(e.target).next().css({'width':'0px'});
     }
 
+    setChatId(id,dispatch){
+        dispatch(setChatId(id));
+    }
+
     render(){
+        const {dispatch} =this.props
+
         return(
             <div className="singleTalker" >
-                <div className="labelTop" onMouseEnter={(e)=>{this.mouseEnter(e)}} onMouseOut={(e)=>this.mouseOut(e)}/>
+                <Link
+                    to={this.props.stuNum?'/chat/p2p/'+this.props.id:'/chat/group/'+this.props.id}
+                    className="labelTop"
+                    onMouseEnter={(e)=>{this.mouseEnter(e)}}
+                    onMouseOut={(e)=>this.mouseOut(e)}
+                    onClick={()=>{this.setChatId(this.props.id,dispatch)}}
+                />
                 <div className="labelBottom" />
                 <div className="head_img">
                     <img src={this.props.headImg}/>
@@ -34,3 +49,9 @@ export default class SingleTalker extends React.Component{
         )
     }
 }
+
+function select(state) {
+    return{}
+}
+
+export default connect(select)(SingleTalker)

@@ -10,7 +10,8 @@ import {
     SET_VIEW_CHAT,
     VIEW_CHAT,
     READ,
-    CHAT_OBJECT_LIST
+    CHAT_OBJECT_LIST,
+    SET_THIS_CHAT_ID
 } from '../actions/types/chat/chatActionType'
 
 //store
@@ -78,7 +79,16 @@ export function listOfChatObject(state=[],action){
             return state;
     }
 }
-
+//储存现在聊天对象的id
+export function thisChatId(state=[],action){
+    switch (action.type){
+        case SET_THIS_CHAT_ID:
+            return action.id;
+            break;
+        default:
+            return state;
+    }
+}
 
 
 //辅助
@@ -132,7 +142,7 @@ function p2pMsg(p2p=[],action) {
                 headImg:action.msg.headImg,
                 read:action.msg.read
             }
-            p2p[action.msg.groupid].push(a);
+            p2p[action.msg.userid].push(a);
             return p2p;
             break;
         case RECEIVE_MSG_FROM_P:
