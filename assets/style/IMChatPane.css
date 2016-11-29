@@ -4,7 +4,7 @@
     width: 75%;
     height: 100%;
     display: inline-block;
-    overflow: scroll;
+    overflow: hidden;
     position: relative;
 }
 .Pane{
@@ -390,7 +390,7 @@
     width:25%;
     height:100%;
     display: inline-block;
-    overflow: scroll;
+    overflow: hidden;
     position: relative;
 }
 .ChatMenuPane{
@@ -426,9 +426,6 @@
     color: #444444;
 
 }
-.group:hover,.p2p:hover{
-    background-color: #eeeeee;
-}
 .menuBtn i{
     width: 50px;
     height: 50px;
@@ -449,7 +446,7 @@
     border-bottom: 1px solid #bcbcbc;
     background-color: #ffffcc;
     border-radius: 0 5px 5px 0;
-    overflow: scroll;
+    overflow: hidden;
     transition: all 0.5s;
 }
 
@@ -468,6 +465,7 @@
     height:70px;
     position: relative;
     vertical-align: top;
+    z-index: 500;
 }
 .TalkerMenuPane .head_img img{
     object-fit: fill;
@@ -488,6 +486,7 @@
     position: relative;
     vertical-align: top;
     border-bottom: 1px solid #bcbcbc;
+    z-index: 500;
 
 }
 .TalkerMenuPane .info h1{

@@ -20,21 +20,39 @@ class ChatMenu extends React.Component{
     changeChat(viewChat,dispatch){
         animate(viewChat);
         dispatch(showChatMsg({type:viewChat}))
+    }
 
+    mouseIn(viewChat,node,nodeViewChat){
+        if(viewChat!=nodeViewChat){
+            $(node).css({'background-color':'#eeeeee'})
+        }
+    }
 
+    mouseOut(viewChat,node,nodeViewChat){
+        if(viewChat!=nodeViewChat){
+            $(node).css({'background-color':'transparent'})
+        }
     }
 
     render(){
-        const {talkerList,dispatch}=this.props;
+        const {talkerList,dispatch,viewChat,id}=this.props;
 
 
         return(
             <div className="ChatMenuPane">
                 <div className="slideMenu" id="slideMenu">
-                    <MenuBtnG ChangeChat={(viewChat)=>{this.changeChat(viewChat,dispatch)}}/>
-                    <MenuBtnP ChangeChat={(viewChat)=>{this.changeChat(viewChat,dispatch)}}/>
+                    <MenuBtnG
+                        ChangeChat={(viewChat)=>{this.changeChat(viewChat,dispatch)}}
+                        mouseIn={(nodeViewChat,node)=>{this.mouseIn(viewChat,node,nodeViewChat)}}
+                        mouseOut={(nodeViewChat,node)=>{this.mouseOut(viewChat,node,nodeViewChat)}}
+                    />
+                    <MenuBtnP
+                        ChangeChat={(viewChat)=>{this.changeChat(viewChat,dispatch)}}
+                        mouseIn={(nodeViewChat,node)=>{this.mouseIn(viewChat,node,nodeViewChat)}}
+                        mouseOut={(nodeViewChat,node)=>{this.mouseOut(viewChat,node,nodeViewChat)}}
+                    />
                 </div>
-                {talkerList?<TalkerMenu talkerList={talkerList}/>:<div/>}
+                {talkerList?<TalkerMenu talkerList={talkerList} id={id}/>:<div/>}
             </div>
 
         )
@@ -73,7 +91,9 @@ function getTalkerList(talkers,view){
 
 function select(state){
     return({
-        talkerList:getTalkerList(state.listOfChatObject,state.viewChatMsg.type)
+        talkerList:getTalkerList(state.listOfChatObject,state.viewChatMsg.type),
+        viewChat:state.viewChatMsg.type,
+        id:state.thisChatId
     })
 
 }

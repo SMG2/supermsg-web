@@ -15,9 +15,11 @@ export default class MenuBtnG extends React.Component{
     render(){
         return(
             <Link to={'/chat/group/'} className="menuBtn group" onClick={()=>{this.props.ChangeChat(VIEW_CHAT.GROUP_CHAT);}}>
-                <div>
-                    <i className="icon-group icon-3x"/>
-                </div>
+                <i
+                    className="icon-group icon-3x"
+                    onMouseEnter={(e)=>{this.props.mouseIn(VIEW_CHAT.GROUP_CHAT,$(e.target).parent().get(0))}}
+                    onMouseOut={(e)=>{this.props.mouseOut(VIEW_CHAT.GROUP_CHAT,$(e.target).parent().get(0))}}
+                />
             </Link>
         )
     }

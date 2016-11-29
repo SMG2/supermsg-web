@@ -30,16 +30,16 @@ class SecondNav extends React.Component{
         ];
         var plist=[
             {
-            id:'0000001',
+            id:'0000003',
             headImg:'http://localhost:8081/material/img/headImg/hj.jpg',
             name:'朱鑫',
             grade:'2014计算机软件工程三班',
             stuNum:'14108438',
         },{
-            id:'0000002',
+            id:'0000004',
             headImg:'http://localhost:8081/material/img/headImg/hj.jpg',
             name:'杨炳勋',
-            grade:'2014计算机软件工程三班',
+            grade:'2014计算机软件工程四班',
             stuNum:'14108438',
         }
         ];

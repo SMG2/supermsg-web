@@ -21,7 +21,7 @@ export default class ChatPane extends React.Component {
         return (
             <div className="Pane">
                 <div id="showMsg" className="msgContent">
-                    {typeof this.props.msgList=='object'&&this.props.msgList instanceof Array?<MsgPane msgList={this.props.msgList} id={this.props.id}/>:<div/>}
+                    {typeof this.props.msgList=='object'&&this.props.msgList instanceof Array?<MsgPane msgList={this.props.msgList} id={this.props.id} />:<div/>}
                 </div>
                 <InputBar send={this.props.send} />
             </div>

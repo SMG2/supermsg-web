@@ -15,9 +15,10 @@ export default class MenuBtnP extends React.Component{
     render(){
         return(
             <Link to={'/chat/p2p/'} className="menuBtn p2p" onClick={()=>{this.props.ChangeChat(VIEW_CHAT.P2P_CHAT);}} >
-                <div>
-                    <i className="icon-user icon-3x"/>
-                </div>
+                <i
+                    onMouseEnter={(e)=>{this.props.mouseIn(VIEW_CHAT.P2P_CHAT,$(e.target).parent().get(0))}}
+                    onMouseOut={(e)=>{this.props.mouseOut(VIEW_CHAT.P2P_CHAT,$(e.target).parent().get(0))}}
+                    className="icon-user icon-3x"/>
             </Link>
         )
     }

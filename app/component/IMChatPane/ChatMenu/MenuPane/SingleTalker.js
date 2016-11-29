@@ -25,11 +25,25 @@ class SingleTalker extends React.Component{
         dispatch(setChatId(id));
     }
 
+
+
     render(){
         const {dispatch} =this.props
+        const cssBottom={minWidth:'1000px'}
+        var Bottom=this.props.choice?
+            (props)=>
+            {return(<div
+                className="labelBottom"
+                style={cssBottom}
+            />)}
+            :
+            (props)=>
+            {return(<div
+                className="labelBottom"
+            />)}
 
         return(
-            <div className="singleTalker" >
+            <div className="singleTalker" id={this.props.stuNum?'p'+this.props.id:'g'+this.props.id}>
                 <Link
                     to={this.props.stuNum?'/chat/p2p/'+this.props.id:'/chat/group/'+this.props.id}
                     className="labelTop"
@@ -37,7 +51,7 @@ class SingleTalker extends React.Component{
                     onMouseOut={(e)=>this.mouseOut(e)}
                     onClick={()=>{this.setChatId(this.props.id,dispatch)}}
                 />
-                <div className="labelBottom" />
+                <Bottom/>
                 <div className="head_img">
                     <img src={this.props.headImg}/>
                 </div>

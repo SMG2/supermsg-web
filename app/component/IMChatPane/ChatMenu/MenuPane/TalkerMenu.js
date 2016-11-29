@@ -19,9 +19,28 @@ export default class TalkerMenu extends React.Component{
         var talkerBlock=[];
         this.props.talkerList.map(talker=>{
             if(talker.stuNum){
-                talkerBlock.push(<SingleTalker key={"p"+talker.id} headImg={talker.headImg} name={talker.name} grade={talker.grade} id={talker.id} stuNum={talker.stuNum}/>)
+                talkerBlock.push(
+                    <SingleTalker
+                        key={"p"+talker.id}
+                        headImg={talker.headImg}
+                        name={talker.name}
+                        grade={talker.grade}
+                        id={talker.id}
+                        stuNum={talker.stuNum}
+                        choice={this.props.id==talker.id}
+                    />
+                )
             }else{
-                talkerBlock.push(<SingleTalker key={"g"+talker.id} headImg={talker.headImg} name={talker.name} grade={talker.grade} id={talker.id} />)
+                talkerBlock.push(
+                    <SingleTalker
+                        key={"g"+talker.id}
+                        headImg={talker.headImg}
+                        name={talker.name}
+                        grade={talker.grade}
+                        id={talker.id}
+                        choice={this.props.id==talker.id}
+                    />
+                )
             }
                 })
         return(
