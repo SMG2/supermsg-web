@@ -14,9 +14,10 @@ export default class MainNav extends React.Component{
     render(){
         return(
             <div className="MainNav">
-                <Link to="/chat">聊天</Link>
-                &nbsp;
-                <Link to="/adv">公告</Link>
+                <div>
+                    <Link activeStyle={{backgroundColor:'lightblue',color:'#5b6de0'}} to="/user/chat">聊天</Link>
+                    <Link activeStyle={{backgroundColor:'lightblue',color:'#5b6de0'}} to="/user/adv">公告</Link>
+                </div>
             </div>
         )
     }

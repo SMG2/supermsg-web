@@ -45,7 +45,7 @@ class SingleTalker extends React.Component{
         return(
             <div className="singleTalker" id={this.props.stuNum?'p'+this.props.id:'g'+this.props.id}>
                 <Link
-                    to={this.props.stuNum?'/chat/p2p/'+this.props.id:'/chat/group/'+this.props.id}
+                    to={this.props.stuNum?'/user/chat/p2p/'+this.props.id:'/user/chat/group/'+this.props.id}
                     className="labelTop"
                     onMouseEnter={(e)=>{this.mouseEnter(e)}}
                     onMouseOut={(e)=>this.mouseOut(e)}

@@ -11,9 +11,8 @@ import {
     read
 } from '../../reduxComponent/actions/chatActions/chatAction'
 
-
-import ChatPane from './ChatPane/ChatPane'
 import ChatMenu from './ChatMenu/ChatMenu'
+import ChatPane from './ChatPane/ChatPane'
 
 var React = require('react');
 
@@ -42,7 +41,7 @@ class IMChatPane extends React.Component{
                 setTimeout(()=>{
                     dispatch(read(VIEW_CHAT.GROUP_CHAT,id));
                 },1000)
-                browserHistory.push('/chat/group/'+id) //通过push路由 重新渲染当前页面 因为redux不能进行自动渲染
+                browserHistory.push('/user/chat/group/'+id) //通过push路由 重新渲染当前页面 因为redux不能进行自动渲染
                 break;
             case VIEW_CHAT.P2P_CHAT:
                 msg_.userid=id;
@@ -51,7 +50,7 @@ class IMChatPane extends React.Component{
                 setTimeout(()=>{
                     dispatch(read(VIEW_CHAT.P2P_CHAT,id));
                 },1000)
-                browserHistory.push('/chat/p2p/'+id)
+                browserHistory.push('/user/chat/p2p/'+id)
                 break;
         }
     }

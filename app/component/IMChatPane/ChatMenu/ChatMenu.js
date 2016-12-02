@@ -36,7 +36,12 @@ class ChatMenu extends React.Component{
 
     render(){
         const {talkerList,dispatch,viewChat,id}=this.props;
-
+        if(viewChat){
+            setTimeout(()=>{
+                $('.ChatMenuPane').css({width:'305px'})
+                $('.slideMenu').css({borderRight:'3px solid #666666'})
+            },0)
+        }
 
         return(
             <div className="ChatMenuPane">

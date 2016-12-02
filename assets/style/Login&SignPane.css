@@ -1,0 +1,263 @@
+/*LoginPane*/
+.loginPane,fotgotPane{
+    display: block;
+    width:100%;
+    height:600px;
+    position: absolute;
+    left: 0;  right:0; bottom: 0;  top:0;
+    margin: auto;
+    /*background-color: #00AA88;*/
+    overflow: hidden;
+}
+.loginPane .inputPane{
+    display: block;
+    width: 400px;
+    height: 280px;
+    margin: auto;
+}
+.blackMargin{
+    margin-bottom: 40px;
+    position: relative;
+}
+.center{
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right:0;
+    top:0;
+    bottom:0;
+}
+
+.inputPane{text-align: center;vertical-align: middle;overflow: hidden}
+.loginPane .headBlock{
+    display: block;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 40px;
+}
+.loginPane .headBlock div{
+    padding-top: 30px;
+    font-size: 40px;
+    text-align: center;
+    line-height: 70px;
+    font-family:'FuturamaBoldFon75a4c414117540';
+    color: #444444;
+}
+
+.loginPane .inputBlock,
+.loginPane .buttonBlock {
+    display: block;
+    width: 400px;
+    height: 50px;
+    position: relative;
+}
+
+.loginPane .inputBlock input{
+    display: block;
+    /*position: absolute;*/
+    width: 300px;
+    height: 50px;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.loginPane .inputBlock input:focus{
+    outline: none;
+    background: #fcf8e3;
+}
+.loginPane .inputBlock input.account{
+    margin-top: 1px;
+    width: 230px;
+    padding-right: 80px;
+}
+.loginPane .inputBlock input.password{
+    width: 230px;
+    padding-right: 80px;
+}
+.loginPane .inputBlock .forgot{
+    display: block;
+    width: 80px;
+    height: 50px;
+    font-size: 14px;
+    line-height: 50px;
+    position: absolute;
+    right:40px;top:2px;
+    margin: auto;
+    color: #999999;
+    text-align: center;
+    text-decoration: none;
+}
+.loginPane .inputBlock .forgot:hover{
+color: #00b3ee;
+cursor: pointer;
+}
+.loginPane .inputFormPane{
+    width: 400px;
+    height: 270px;
+    display: inline-block;
+
+}
+
+.loginPane .QRCodePane{
+    display: inline-block;
+    width: 400px;
+    height: 270px;
+    vertical-align: top;
+    position: relative;
+}
+.loginPane .QRCodePane img{
+    display: block;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right:0;
+    top:10px;
+}
+
+.loginPane .inputForm{
+    display: block;
+    width:800px;
+    height:270px;
+
+
+}
+.loginPane .inputForm.animate{
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition-timing-function: cubic-bezier(1,1,1,1);
+}
+.loginPane .inputForm_{
+    display: inline-block;
+    width:400px;
+    height:270px;
+    vertical-align: top;
+
+
+}
+
+.loginPane .buttonBlock button{
+    display: block;
+    width: 317px;
+    height: 50px;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;  right:0;
+    margin: auto;
+    line-height: 40px;
+    font-size: 20px;
+    letter-spacing: 5px;
+
+}
+.loginPane .buttonBlock i{
+    width: 0;
+    opacity: 0;
+    display: inline-block;
+}
+.loginPane .buttonBlock div{
+    display: inline-block;
+}
+.buttonBlock button .animate{
+width: 0;
+opacity: 0;
+-webkit-transition: all 0.3s;
+-moz-transition: all 0.3s;
+transition-timing-function: cubic-bezier(1,1,1,1);
+}
+.buttonBlock .loginBtn{
+    color: #ffffff;
+    border: 1px solid #00b3ee;
+    background-color: #00b3ee;
+}
+.buttonBlock .loginBtn:hover{
+    cursor: pointer;
+}
+.buttonBlock .loginBtn:focus{
+    outline: none;
+}
+.buttonBlock .loginBtn:active{
+    zoom:1.05;
+}
+
+.buttonBlock .qrcodeBtn{
+    border: 1px solid #777777;
+    background-color: #FFFFFF;
+    color: #777777;
+}
+.buttonBlock.qrcodeBtnBlock{
+    width: 100%;
+}
+.buttonBlock .qrcodeBtn:hover{
+    cursor: pointer;
+}
+.buttonBlock .qrcodeBtn:focus{
+    outline: none;
+}
+.buttonBlock .qrcodeBtn:active{
+    zoom:1.05;
+}
+
+.divide{
+    width: 100%;
+    height: 1px;
+
+}
+.divide div {
+    width: 300px;
+    height: 1px;
+    position: absolute;
+    left: 0;  right:0;
+    margin: auto;
+    background-color: #cecece;
+}
+
+.loginOther{
+    width: 100%;
+    height: 40px;
+    text-align: center;
+}
+.loginOther div{
+    display: inline-block;
+    color: #777777;
+}
+.loginOther .signToNew{
+    text-decoration: none;
+    color: #00b3ee;
+}
+.loginOther .signToNew:hover{
+    cursor: pointer;
+}
+
+/*forgot*/
+.forgotPane .headBlock{
+    display: block;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 40px;
+}
+.forgotPane .headBlock div{
+    padding-top: 30px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 70px;
+    color: #444444;
+}
+
+.forgotPane .buttonBlock{
+    display: block;
+    width: 400px;
+    height: 50px;
+    position: relative;
+    margin-top: 40px;
+}
+
+.forgotPane .buttonBlock.remember button{
+    background-color: #ffffff;
+    color:#999999;
+    border: 1px solid #999999;
+}
+
+

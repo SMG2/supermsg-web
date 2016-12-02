@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title>index</title>
     <link rel="stylesheet" href="http://localhost:8081/style/IMChatPane.css">
+    <link rel="stylesheet" href="http://localhost:8081/style/Login&SignPane.css">
     <link rel="stylesheet" href="http://localhost:8081/lib/Font-Awesome-3.2.1/css/font-awesome.css">
+    <!--字体-->
+    <link href='//cdn.webfont.youziku.com/webfonts/nomal/95552/44782/583ec145f629d8127c8df465.css' rel='stylesheet' type='text/css' />
     <style>
         body,#body{
             margin: 0;
@@ -20,25 +23,46 @@
         .MainNav{
             display: block;
             width:100%;
-            height: 50px;
-            background-color: lightblue;
+            height: 40px;
+            background-color: #f2f2f2;
             position: relative;
             overflow: hidden;
+        }
+        .MainNav div{
+            width:300px;
+            height: 40px;
+            position: absolute;
+            left: 0;right: 0;
+            top:0;bottom: 0;
+            margin: auto;
+            text-align: center;
+            font-size: 30px;
+        }
+        .MainNav div a{
+            display: inline-block;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            text-decoration: none;
+            margin-left: 10px;
+            margin-right: 10px;
+            color:#444444
+        }
+        .MainNav div a:hover{
+            color:#5b6de0;
         }
         .SecondNav{
             display: block;
             width:100%;
-            height: 30px;
-            background-color: rebeccapurple;
+            height: 40px;
+            background-color: #e2e2e2;
             position: relative;
             overflow: hidden;
         }
         .bodyPane{
             position: relative;
             width: 100%;
-            /*height: 100%;*/
             overflow: scroll;
-            /*background-color: #2f6f9f;*/
         }
     </style>
 </head>
@@ -55,6 +79,7 @@
 
 <script src="http://localhost:8081/lib/Jquery/jquery_2.1.4.js"></script>
 <script src="http://localhost:8081/lib/Jquery/jquery.qqFace.js"></script>
+<script src="http://localhost:8081/lib/qrcode.js"></script>
 <script>
     $(function(){
         var clientHeight=$(window).height();

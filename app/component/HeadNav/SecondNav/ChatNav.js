@@ -13,6 +13,10 @@ class SecondNav extends React.Component{
         super(props)
     }
 
+    componentDidMount(){
+
+    }
+
     init(dispatch){
         var glist=[
             {
@@ -48,12 +52,14 @@ class SecondNav extends React.Component{
     }
 
     render(){
-
         const {dispatch} =this.props;
-
+        this.init(dispatch)
         return(
-            <div className="SecondNav">
-                <div  onClick={()=>{this.init(dispatch)}}>开始聊天</div>
+            <div>
+                <div className="SecondNav chatNav">
+                    <div>开始聊天</div>
+                </div>
+                {this.props.children}
             </div>
         )
     }

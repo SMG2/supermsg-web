@@ -53,26 +53,32 @@ export function listOfChatObject(state=[],action){
     // console.log(action)
     switch (action.type){
         case CHAT_OBJECT_LIST.GROUP:
-            action.infos.map(info=>{
-                state.glist.push({
-                    id:info.id,
-                    headImg:info.headImg,
-                    name:info.name,
-                    grade:info.grade
+            if(!state.glist.refresh){
+                action.infos.map(info=>{
+                    state.glist.push({
+                        id:info.id,
+                        headImg:info.headImg,
+                        name:info.name,
+                        grade:info.grade
+                    })
                 })
-            })
+                state.glist.refresh=true;
+            }
             return state;
             break;
         case CHAT_OBJECT_LIST.P2P:
-            action.infos.map(info=>{
-                state.plist.push({
-                    id:info.id,
-                    headImg:info.headImg,
-                    name:info.name,
-                    grade:info.grade,
-                    stuNum:info.stuNum
+            if(!state.plist.refresh){
+                action.infos.map(info=>{
+                    state.plist.push({
+                        id:info.id,
+                        headImg:info.headImg,
+                        name:info.name,
+                        grade:info.grade,
+                        stuNum:info.stuNum
+                    })
                 })
-            })
+                state.plist.refresh=true;
+            }
             return state;
             break;
         default:
