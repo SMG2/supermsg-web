@@ -9,7 +9,7 @@ import {browserHistory} from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import Router from './Router'
 
-import ajax from './Ajax/createAjax'
+import ajax from './plugin/Ajax/createAjax'
 
 var React= require('react');
 var ReactDOM= require('react-dom');

@@ -17,10 +17,10 @@ option={
  */
 
 export default function ajax(option){
-    var id=option.id;
+    var id=option.id||'000';
     var url=option.url;
     var type=option.type||'json';
-    var method=option.method.toUpperCase();
+    var method=(option.method||'GET').toUpperCase();
     var data=method!=='GET'?option.data:null;
     var success=option.success||function(){};
     var fail=option.fail||function(){};

@@ -6,21 +6,11 @@
 </head>
 <body>
 
-<script type="text/javascript" src="assets/lib/goeasy.js"></script>
+<script type="text/javascript" src="app/plugin/GoEasy/goeasy.js"></script>
 
 <script type="text/javascript">
 
-  var goEasy = new GoEasy({
-    appkey: 'eb76ed63-ee44-4f07-96ac-eba8c2e544e6'
-  });
 
-  goEasy.subscribe({
-    channel: '14108414',
-    onMessage: function(message){
-      document.getElementById('test').innerHTML=message.content;
-      alert('�յ���'+message.content);
-    }
-  });
 
 </script>
 

@@ -17,7 +17,7 @@ export default class LoginButton extends React.Component{
     render(){
         return(
             <div className="buttonBlock blackMargin">
-                <button onClick={()=>{browserHistory.push('/user')}} className="loginBtn" onMouseOver={()=>{this.setState({hover:true})}} onMouseLeave={()=>{this.setState({hover:false})}}>
+                <button onClick={this.props.login} className="loginBtn" onMouseOver={()=>{this.setState({hover:true})}} onMouseLeave={()=>{this.setState({hover:false})}}>
                     <div style={{display:'inline-block'}}>
                         登录
                     </div>
