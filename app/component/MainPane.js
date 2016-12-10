@@ -14,10 +14,10 @@ export default class MainPane extends React.Component{
             userDetail:null,
             haveRequestData:false
         }
-
     }
 
     componentDidMount(){
+        //添加监听接收消息事件
     }
 
     render(){

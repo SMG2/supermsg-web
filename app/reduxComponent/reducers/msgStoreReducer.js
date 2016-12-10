@@ -59,7 +59,8 @@ export function listOfChatObject(state=[],action){
                         id:info.id,
                         headImg:info.headImg,
                         name:info.name,
-                        grade:info.grade
+                        grade:info.grade,
+                        memberInfo:info.memberInfo||[]
                     })
                 })
                 state.glist.refresh=true;

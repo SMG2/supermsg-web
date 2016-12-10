@@ -23,8 +23,9 @@ class LoginPane extends React.Component{
             qr:false,
             SignIn:false,
             qrMsg:"",
-            goeasy:null,
-            dispatch:null
+            goEasy:null,
+            dispatch:null,
+            loginChannel:''
         }
         this.accountLogin=this.accountLogin.bind(this);
         this.qrLogin=this.qrLogin.bind(this);
@@ -45,7 +46,7 @@ class LoginPane extends React.Component{
             url:"http://120.27.49.173:8080/v1.0/auth/qrcode/"+new Date().getTime(),
             success:function(data){
                 var qrcode = new QRCode('QRCodePane', {
-                    text: data.url,
+                    text: '{action:"login", url:"'+data.url+'"}',
                     width: 256,
                     height: 256,
                     colorDark: '#111111',
@@ -58,12 +59,34 @@ class LoginPane extends React.Component{
                         onConnected:function(){console.log('connected')},
                         onDisConnected:function(){console.log('disconnected')},
                         onConnectFailed:function(err){console.log(err)}
-                    })
+                    }),
+                    loginChannel:data.channel
                 })
                 self.state.goEasy.subscribe({
                         channel:data.channel,
                         onMessage:function(msg){
-                            console.log(msg)
+                            // channel
+                            //     :
+                            //     "7bf5c76ba6c7e6f405458510b5fa022"
+                            // content
+                            //     :
+                            //     "{"userid":"1033614108413","token":"MTAzMzYxNDEwODQxMw=","action":"login"}"
+                            // guid
+                            //     :
+                            //     "fec64a9e-a23a-4734-9212-d77a8b104189"
+                            // userId
+                            //     :
+                            //     "anonymous-24923"
+                            if(msg){
+                                var content=JSON.parse(msg.content)
+                                var userid=content.userid;
+                                self.state.goEasy.unsubscribe({
+                                    channel:msg.channel,
+                                    onSuccess:function(){console.log('disConnected')}
+                                })
+                                console.log(userid);
+
+                            }
                         }
                     }
                 )
@@ -81,7 +104,11 @@ class LoginPane extends React.Component{
             SignIn:true
         },
             ()=>{this.initUserInfo(id)}
-            );
+        );
+        this.state.goEasy.unsubscribe({
+            channel:this.state.loginChannel,
+            onSuccess:function(){console.log('disConnected')}
+        })
 
     }
 
@@ -99,20 +126,6 @@ class LoginPane extends React.Component{
         //
         // })
 
-        var glist=[
-            {
-                id:'0000001',
-                headImg:'http://localhost:8081/material/img/headImg/hj.jpg',
-                name:'软件工程四班',
-                grade:'2014计算机',
-            },
-            {
-                id:'0000002',
-                headImg:'http://localhost:8081/material/img/headImg/hj.jpg',
-                name:'软件工程三班',
-                grade:'2014计算机',
-            }
-        ];
         var plist=[
             {
                 id:'0000003',
@@ -128,6 +141,23 @@ class LoginPane extends React.Component{
                 stuNum:'14108438',
             }
         ];
+        var glist=[
+            {
+                id:'0000001',
+                headImg:'http://localhost:8081/material/img/headImg/hj.jpg',
+                name:'软件工程四班',
+                grade:'2014计算机',
+                memberInfo:plist
+            },
+            {
+                id:'0000002',
+                headImg:'http://localhost:8081/material/img/headImg/hj.jpg',
+                name:'软件工程三班',
+                grade:'2014计算机',
+                memberInfo:plist
+            }
+        ];
+
         this.state.dispatch(setP2PList(plist));
         this.state.dispatch(setGroupList(glist))
         if(this.state.SignIn){

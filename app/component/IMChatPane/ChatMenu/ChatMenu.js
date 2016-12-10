@@ -8,6 +8,7 @@ import {showChatMsg} from '../../../reduxComponent/actions/chatActions/chatActio
 
 import MenuBtnG from './MenuBtn/MenuBtnG'
 import MenuBtnP from './MenuBtn/MenuBtnP'
+import MenuBtnSet from './MenuBtn/MenuBtnSet'
 import TalkerMenu from './MenuPane/TalkerMenu'
 
 var React = require('react');
@@ -15,10 +16,18 @@ var React = require('react');
 class ChatMenu extends React.Component{
     constructor(props){
         super(props);
+        this.state={
+            unfold:false,
+            button:null
+        }
+        this.changeChat=this.changeChat.bind(this)
     }
 
     changeChat(viewChat,dispatch){
         animate(viewChat);
+        this.setState({
+          button:viewChat
+        })
         dispatch(showChatMsg({type:viewChat}))
     }
 
@@ -34,12 +43,16 @@ class ChatMenu extends React.Component{
         }
     }
 
+
     render(){
         const {talkerList,dispatch,viewChat,id}=this.props;
+        console.log(talkerList)
         if(viewChat){
             setTimeout(()=>{
                 $('.ChatMenuPane').css({width:'305px'})
+                $('.menuBtn.set .animate').css({transform:'rotate(-180deg)'})
                 $('.slideMenu').css({borderRight:'3px solid #666666'})
+                animate(viewChat)
             },0)
         }
 
@@ -55,6 +68,9 @@ class ChatMenu extends React.Component{
                         ChangeChat={(viewChat)=>{this.changeChat(viewChat,dispatch)}}
                         mouseIn={(nodeViewChat,node)=>{this.mouseIn(viewChat,node,nodeViewChat)}}
                         mouseOut={(nodeViewChat,node)=>{this.mouseOut(viewChat,node,nodeViewChat)}}
+                    />
+                    <MenuBtnSet
+
                     />
                 </div>
                 {talkerList?<TalkerMenu talkerList={talkerList} id={id}/>:<div/>}
