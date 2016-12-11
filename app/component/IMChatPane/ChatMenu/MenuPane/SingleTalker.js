@@ -17,6 +17,8 @@ class SingleTalker extends React.Component{
         super(props);
         this.state={
             hover:false,
+            unfold:false,
+            showMember:false
         }
     }
     mouseEnter(e){
@@ -53,17 +55,26 @@ class SingleTalker extends React.Component{
                     />
                 )
             }
+
         return(
-            <div>
-                <div className="singleTalker" id={isP2P?'p'+this.props.id:'g'+this.props.id}>
+            <div className="singleTalkerBlock">
+                <div
+                    className="singleTalker"
+                    id={isP2P?'p'+this.props.id:'g'+this.props.id}
+                >
                     <SingleTalkerInfoBtn
                         id={this.props.id}
                         stuNum={!!this.props.stuNum}
                         mouseOver={()=>{this.setState({hover:true})}}
                         mouseLeave={()=>{this.setState({hover:false})}}
                         click={(id)=>{this.setChatId(id,dispatch)}}
+                        showMember={()=>{this.setState({unfold:true,showMember:true})}}
+                        showInfo={()=>{this.setState({unfold:true,showMember:false})}}
+                        hover={this.state.hover}
                     />
+
                     <Bottom/>
+
                     <div className="head_img">
                         <img src={this.props.headImg}/>
                     </div>
@@ -72,7 +83,15 @@ class SingleTalker extends React.Component{
                         <h2>{this.props.grade}</h2>
                     </div>
                 </div>
-                <SingleTalkerInfoBlock/>
+                {
+                    this.state.unfold?
+                        this.state.showMember?
+                            <SingleTalkerInfoBlock mark={"member"} members={"member"} unfold={()=>{this.setState({unfold:false})}}/>
+                            :
+                            <SingleTalkerInfoBlock mark={"info"} info={"info"} unfold={()=>{this.setState({unfold:false})}}/>
+                        :
+                        <div/>
+                }
             </div>
         )
     }

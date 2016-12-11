@@ -473,6 +473,12 @@
     transition: all 0.5s;
 }
 
+.singleTalkerBlock{
+    display: block;
+    width:240px;
+    height:auto;
+    position: relative;
+}
 .singleTalker{
     display: block;
     width:240px;
@@ -509,7 +515,8 @@
 .infoBtn:hover{
     cursor: pointer;
 }
-.infoBtn.info_ i:hover,.infoBtn.member_ i:hover{
+.infoBtn.info_ i:hover,
+.infoBtn.member_ i:hover{
     color: blue;
 }
 
@@ -576,7 +583,109 @@
     cursor: pointer;
 }
 
+/*chatMenuInfoBlock*/
+.infoBlock{
+    width: 100%;
+    height: 0;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: scroll;
 
+    transition: all 0.5s;
+}
+
+.infoBlock .search{
+    display: block;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+}
+
+.infoBlock .search input{
+    display: inline-block;
+    width: calc(100% - 16px - 30px);
+    height: 30px;
+    margin-left: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+    border: 1px dashed #dddddd;
+    vertical-align: top;
+    font-size:15px;
+}
+.infoBlock .search input:focus{
+    outline: none;
+}
+
+.infoBlock .closeBtn{
+    vertical-align: top;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 30px;
+
+}
+.infoBlock .closeBtn i:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.infoBlock .div_line{
+    display: block;
+    width: calc(100% - 8px);
+    height: 1px;
+    margin-left: 4px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    background-color: #dddddd;
+}
+
+.infoBlock .displayInfo{
+    display: block;
+    width: calc(100% - 8px);
+    height:150px;
+    margin-left: 4px;
+    background-color: #00AA88;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+}
+.infoBlock .displayInfo .SingleMemberBlock{
+    display: inline-block;
+    width: calc(100% / 3);
+    height: 80px;
+    position: relative;
+}
+.infoBlock .displayInfo .SingleMemberBlock img,
+.infoBlock .displayInfo .SingleMemberBlock .hint{
+    width: 60px;
+    height: 60px;
+    object-fit: fill;
+    border-radius: 40px;
+
+    position: absolute;
+    left:0;top:0;bottom:0;right:0;
+    margin:auto;
+    z-index: 0;
+}
+.infoBlock .displayInfo .SingleMemberBlock .hint{
+    opacity: 0;
+    z-index: 100;
+    font-size: 20px;
+    text-align: center;
+    line-height: 60px;
+    background-color: #777777;
+    color: white;
+    transition: all 0.3s;
+}
+.infoBlock .displayInfo .SingleMemberBlock .hint:hover{
+    cursor: pointer;
+}
 
 /*clearfix*/
 .clearfix:after{

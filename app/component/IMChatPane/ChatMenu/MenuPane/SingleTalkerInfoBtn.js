@@ -2,7 +2,7 @@
  * Created by yangbingxun on 2016/12/8.
  */
 
-import {Link} from 'react-router'
+import {browserHistory} from 'react-router'
 
 var React= require('react')
 export default class SingleTalkerInfoBtn extends React.Component {
@@ -16,46 +16,45 @@ export default class SingleTalkerInfoBtn extends React.Component {
     render(){
         const Info=((props)=>{
             return(
-                <div className="infoBtn info_">
-                    <i className="icon-info-sign"/>
+                <div onClick={()=>{props.showInfo()}} className="infoBtn info_">
+                    <i  className="icon-info-sign"/>
                 </div>
             )
         })
 
         const Member=((props)=>{
             return(
-                <div className="infoBtn member_">
-                    <i className="icon-user"/>
+                <div onClick={()=>{props.showMember()}} className="infoBtn member_">
+                    <i  className="icon-user"/>
                 </div>
             )
         })
 
+        const clickUrl=this.props.stuNum?'/user/chat/p2p/'+this.props.id:'/user/chat/group/'+this.props.id;
+
         return(
-            <Link
-                to={this.props.stuNum?'/user/chat/p2p/'+this.props.id:'/user/chat/group/'+this.props.id}
+            <div
                 className="labelTop"
-                onMouseOver={()=>{this.setState({onInfo:true});this.props.mouseOver();}}
-                onMouseLeave={()=>{this.setState({onInfo:false});this.props.mouseLeave();}}
-                onClick={()=>{this.props.click(this.props.id)}}
+                onMouseEnter={()=>{this.props.mouseOver();}}
+                onMouseLeave={()=>{this.props.mouseLeave();}}
+                onClick={()=>{
+                    this.props.click(this.props.id);
+                    browserHistory.push(clickUrl)
+                }
+                }
             >
                     <div  className="infoBtnBlock">
                         {
-                            this.state.onInfo?
-                                this.props.stuNum?
-                                    <div>
-                                        <div className="infoBtn"/>
-                                        <Info/>
-                                    </div>
-                                        :
-                                    <div>
-                                        <Member/>
-                                        <Info/>
-                                    </div>
+                            this.props.hover?
+                                <div>
+                                    {this.props.stuNum?<div className="infoBtn"/>:<Member showMember={this.props.showMember}/>}
+                                    <Info showInfo={this.props.showInfo}/>
+                                </div>
                                 :
                                 <div/>
                         }
                     </div>
-            </Link>
+            </div>
         )
     }
 }
