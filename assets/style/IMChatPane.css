@@ -673,13 +673,14 @@
     margin:auto;
     z-index: 0;
 }
+
 .infoBlock .displayInfo .SingleMemberBlock .hint{
-    opacity: 0;
+    opacity: 0.3;
     z-index: 100;
     font-size: 20px;
     text-align: center;
     line-height: 60px;
-    background-color: #777777;
+    background-color: #888888;
     color: white;
     transition: all 0.3s;
 }

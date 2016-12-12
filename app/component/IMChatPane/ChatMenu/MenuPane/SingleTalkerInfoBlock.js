@@ -2,11 +2,25 @@
  * Created by yangbingxun on 2016/12/9.
  */
 
+import {connect} from 'react-redux'
+import {showChatMsg} from '../../../../reduxComponent/actions/chatActions/chatAction'
+import {VIEW_CHAT} from '../../../../reduxComponent/actions/types/chat/chatActionType'
+import {setChatId} from '../../../../reduxComponent/actions/chatActions/chatAction'
+import {browserHistory,Link} from 'react-router'
+
 var React=require('react')
 
-export default class SingleTalkerInfoBlock extends React.Component{
+
+
+class SingleTalkerInfoBlock extends React.Component{
     constructor(props){
         super(props);
+        this.state={
+            searchText:''
+        };
+        this.selectShowMember=this.selectShowMember.bind(this);
+        this.change=this.change.bind(this);
+
 
     }
 
@@ -18,69 +32,62 @@ export default class SingleTalkerInfoBlock extends React.Component{
         },0)
     }
 
+    selectShowMember(members,keyword){
+        var options={
+            keys:['id','stuNum','name']
+        };
+        var fuse = new Fuse(members, options)
+        return fuse.search(keyword);
+    }
+
+    change(text){
+        this.setState({
+            searchText:text
+        })
+    }
+
     render(){
+        var {dispatch}=this.props;
+
         var members=this.props.members||[];
+
+        var showMembers=this.selectShowMember(members,this.state.searchText);
+
+        showMembers=showMembers.length==0?members:showMembers;
         var membersBlock=[]
         try {
-            members.map((member)=>{
+            showMembers.map((member)=>{
                 membersBlock.push(
-                    <div className="memberHead">
-                        <img/>
-                        <div></div>
-                    </div>
+                    <Link className="SingleMemberBlock"
+                         key={member.id}
+                         onClick={
+                             ()=>{
+                                 dispatch(setChatId(member.id))
+                                 dispatch(showChatMsg({type:VIEW_CHAT.P2P_CHAT}))
+                             }
+                         }
+                          to={'/user/chat/p2p/'+member.id}
+                    >
+                        <img src={member.headImg}/>
+                        <div className="hint"
+                             onMouseEnter={(e)=>{$(e.target).css({'opacity':'0.8'})}}
+                             onMouseLeave={(e)=>{$(e.target).css({'opacity':'0.3'})}}
+                        >
+                            {member.name}
+                        </div>
+                    </Link>
                 )
             })
         }catch (e){}
 
-        const MemberBlock=(props)=>{
-            return(
-                <div>
-                    <div className="search">
-                        <input placeholder="请输入查找人信息..."/>
-                        <div className="closeBtn"
-                             onClick={(e)=>{
-                                 setTimeout(()=>{
-                                     props.unfold()
-                                 },500);
-                                 $(e.target)
-                                     .parent()
-                                     .parent()
-                                     .parent()
-                                     .parent()
-                                     .css({'height':'0'})
-
-                             }}
-                        >
-                            <i className="icon-double-angle-up"/>
-                        </div>
-                    </div>
-                    <div className="div_line"/>
-                    <div className="displayInfo">
-                        <div className="SingleMemberBlock">
-                            <img src="http://localhost:8081/material/img/headImg/hj.jpg"/>
-                            <div className="hint"
-                                 onMouseEnter={(e)=>{$(e.target).css({'opacity':'0.8'})}}
-                                 onMouseLeave={(e)=>{$(e.target).css({'opacity':'0'})}}
-                            >
-                                杨炳勋
-                            </div>
-                        </div>
-                    </div>
-                    <div className="div_line"/>
-                </div>
-            )
-        }
-
-        const InfoBlock=(props)=>{
-            return(
-                <div/>
-            )
-        }
-
         return(
             <div className="infoBlock">
                 {this.props.mark=='member'?
-                    <MemberBlock unfold={this.props.unfold}/>
+                    <MemberBlock unfold={this.props.unfold}
+                                 searchText={this.state.searchText}
+                                 changeWord={this.change}
+                                 membersBlock={membersBlock}
+                    />
                     :
                     <InfoBlock unfold={this.props.unfold}/>
                 }
@@ -88,3 +95,50 @@ export default class SingleTalkerInfoBlock extends React.Component{
         )
     }
 }
+
+const MemberBlock=(props)=>{
+    return(
+        <div>
+            <div className="search">
+                <input placeholder="请输入查找人信息..."
+                       onChange={(e)=>{props.changeWord(e.target.value)}}
+                       value={props.searchText}
+                       autoFocus="autoFocus"
+                />
+                <div className="closeBtn"
+                     onClick={(e)=>{
+                         setTimeout(()=>{
+                             props.unfold()
+                         },500);
+                         $(e.target)
+                             .parent()
+                             .parent()
+                             .parent()
+                             .parent()
+                             .css({'height':'0'})
+
+                     }}
+                >
+                    <i className="icon-double-angle-up"/>
+                </div>
+            </div>
+            <div className="div_line"/>
+            <div className="displayInfo">
+                {props.membersBlock}
+            </div>
+            <div className="div_line"/>
+        </div>
+    )
+};
+
+const InfoBlock=(props)=>{
+    return(
+        <div/>
+    )
+}
+
+function select(state){
+    return{}
+}
+
+export default connect(select)(SingleTalkerInfoBlock)

@@ -86,9 +86,9 @@ class SingleTalker extends React.Component{
                 {
                     this.state.unfold?
                         this.state.showMember?
-                            <SingleTalkerInfoBlock mark={"member"} members={"member"} unfold={()=>{this.setState({unfold:false})}}/>
+                            <SingleTalkerInfoBlock mark={"member"} members={this.props.memberInfo} unfold={()=>{this.setState({unfold:false})}}/>
                             :
-                            <SingleTalkerInfoBlock mark={"info"} info={"info"} unfold={()=>{this.setState({unfold:false})}}/>
+                            <SingleTalkerInfoBlock info={"info"} unfold={()=>{this.setState({unfold:false})}}/>
                         :
                         <div/>
                 }

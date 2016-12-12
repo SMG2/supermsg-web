@@ -39,6 +39,7 @@ export default class TalkerMenu extends React.Component{
                         grade={talker.grade}
                         id={talker.id}
                         choice={this.props.id==talker.id}
+                        memberInfo={talker.memberInfo}
                     />
                 )
             }
