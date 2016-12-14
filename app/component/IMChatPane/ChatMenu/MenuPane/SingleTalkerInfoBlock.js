@@ -34,7 +34,7 @@ class SingleTalkerInfoBlock extends React.Component{
 
     selectShowMember(members,keyword){
         var options={
-            keys:['id','stuNum','name']
+            keys:['id','stuNum','name','sex','nation']
         };
         var fuse = new Fuse(members, options)
         return fuse.search(keyword);
@@ -70,8 +70,16 @@ class SingleTalkerInfoBlock extends React.Component{
                     >
                         <img src={member.headImg}/>
                         <div className="hint"
-                             onMouseEnter={(e)=>{$(e.target).css({'opacity':'0.8'})}}
-                             onMouseLeave={(e)=>{$(e.target).css({'opacity':'0.3'})}}
+                             onMouseEnter={(e)=>{
+                                 $(e.target).css({
+                                     'opacity':'0.8'
+                                 })
+                             }}
+                             onMouseLeave={(e)=>{
+                                 $(e.target).css({
+                                     'opacity':'0'
+                                 })
+                             }}
                         >
                             {member.name}
                         </div>
@@ -116,7 +124,6 @@ const MemberBlock=(props)=>{
                              .parent()
                              .parent()
                              .css({'height':'0'})
-
                      }}
                 >
                     <i className="icon-double-angle-up"/>
@@ -126,7 +133,6 @@ const MemberBlock=(props)=>{
             <div className="displayInfo">
                 {props.membersBlock}
             </div>
-            <div className="div_line"/>
         </div>
     )
 };

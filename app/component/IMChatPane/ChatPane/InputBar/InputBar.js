@@ -2,13 +2,15 @@
  * Created by yangbingxun on 2016/11/18.
  */
 
+import {connect} from 'react-redux'
+
 import EmotionButton from './EmotionButton'
 import MoreButton from './MoreButton'
 import MsgInput from './MsgInput'
 
 var React=require('react');
 
-export default class InputBar extends React.Component{
+class InputBar extends React.Component{
     constructor(props){
         super(props);
         this.state={msgList:[],send:false}
@@ -24,13 +26,11 @@ export default class InputBar extends React.Component{
             type:'text',
             content:_msg.trim(),
             timeStamp:dateTime.getTime().toString(),
-            headImg:'http://localhost:8081/material/img/headImg/hj.jpg',
             time:time.split(':')[0]+":"+time.split(':')[1],
             date:(dateTime.getMonth()+1)+"月"+dateTime.getDate()+"日"
         }
 
 
-        //
         if(this.state.send){
             this.props.send(msg);
             this.setState({send:!this.state.send})
@@ -51,14 +51,22 @@ export default class InputBar extends React.Component{
     }
 
     render(){
+
+
         return(
             <div className="sendMsgBar">
-                <MsgInput send={this.send} />
+                <MsgInput send={(msg)=>{this.send(msg)}} />
                 <EmotionButton/>
                 <MoreButton/>
             </div>
         )
     }
-
 }
+
+
+function select(state){
+    return{}
+}
+
+export default connect(select)(InputBar)
 

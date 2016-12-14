@@ -17,8 +17,9 @@ option={
  */
 
 export default function ajax(option){
+    const host='http://120.27.49.173:8080';
     var id=option.id||'000';
-    var url=option.url;
+    var url=option.url.indexOf("http")>0?option.url:host+option.url;
     var type=option.type||'json';
     var method=(option.method||'GET').toUpperCase();
     var data=method!=='GET'?option.data:null;
@@ -52,7 +53,7 @@ export default function ajax(option){
                 success(response.data,response.msg,response.status)
             }else{
                 response=JSON.parse(xhr.responseText);
-                fail(response.status,response.msg)
+                fail(response.msg,response.status)
             }
         }
     }

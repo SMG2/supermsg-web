@@ -2,20 +2,19 @@
  * Created by yangbingxun on 2016/12/8.
  */
 
-export function setCookie(name,value) {
-    var cookie=getCookieToJson();
-    cookie[name]=value;
-    setJsonToCookie(cookie);
+export function setCookie(c_name,value,expiredays) {
+    var exdate=new Date()
+    exdate.setDate(exdate.getDate()+expiredays)
+    document.cookie=c_name+ "=" +escape(value)+
+        ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
 }
 
 export function delCookie(name){
-    var cookie=getCookieToJson();
-    delete cookie[name];
-    setJsonToCookie(cookie);
+    document.cookie=name+'="";expires='+new Date().toGMTString();
 }
 
 export function getCookie(name){
-    var cookie=document.cookie;
+    var cookie=getCookieToJson();
     return cookie[name]
 }
 
@@ -31,4 +30,6 @@ function setJsonToCookie(json){
     }
     cookie=cookies.join("; ")
     document.cookie=cookie;
+    console.log(cookie)
+    console.log(document.cookie)
 }

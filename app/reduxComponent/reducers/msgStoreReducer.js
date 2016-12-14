@@ -14,6 +14,8 @@ import {
     SET_THIS_CHAT_ID
 } from '../actions/types/chat/chatActionType'
 
+import {SET_USER_INFO} from '../actions/types/userActionType'
+
 //store
 //存储展示聊天信息界面
 export function viewChatMsg(state=[],action){
@@ -50,7 +52,6 @@ export function chatMsg(state=[],action){
 export function listOfChatObject(state=[],action){
     if(!state.glist) state.glist=[];
     if(!state.plist) state.plist=[];
-    // console.log(action)
     switch (action.type){
         case CHAT_OBJECT_LIST.GROUP:
             if(!state.glist.refresh){
@@ -75,7 +76,9 @@ export function listOfChatObject(state=[],action){
                         headImg:info.headImg,
                         name:info.name,
                         grade:info.grade,
-                        stuNum:info.stuNum
+                        stuNum:info.stuNum,
+                        nation:info.nation,
+                        sex:info.sex
                     })
                 })
                 state.plist.refresh=true;
@@ -91,6 +94,16 @@ export function thisChatId(state=[],action){
     switch (action.type){
         case SET_THIS_CHAT_ID:
             return action.id;
+            break;
+        default:
+            return state;
+    }
+}
+//存储当前用户信息
+export function userInfo(state=[],action){
+    switch (action.type){
+        case SET_USER_INFO:
+            return action.info;
             break;
         default:
             return state;

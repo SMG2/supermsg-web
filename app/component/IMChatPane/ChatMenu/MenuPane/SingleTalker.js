@@ -22,7 +22,7 @@ class SingleTalker extends React.Component{
         }
     }
     mouseEnter(e){
-        $(e.target).next().css({'width':'240px'});
+        $(e.target).next().css({'width':'220px'});
     }
 
     mouseOut(e){
@@ -40,14 +40,17 @@ class SingleTalker extends React.Component{
         const cssBottom=
             this.state.hover?
                 this.props.choice?
-                    {width:'240px',backgroundColor: '#dddddd'}:
-                    {width:'240px',backgroundColor: '#eeeeee'}
+                    {width:'230px',backgroundColor: '#d4d4d4'}
                     :
+                    {width:'230px',backgroundColor: '#dddddd'}
+                :
                 this.props.choice?
-                    {width:'240px',backgroundColor: '#dddddd'} :
+                    {width:'230px',backgroundColor: '#d4d4d4'}
+                    :
                     {width:'0px',backgroundColor: 'transparent'};
         const Bottom= (props)=>
             {
+                props.unfold?cssBottom['borderRadius']='10px 10px 0 0':cssBottom;
                 return(
                     <div
                         className="labelBottom"
@@ -73,7 +76,7 @@ class SingleTalker extends React.Component{
                         hover={this.state.hover}
                     />
 
-                    <Bottom/>
+                    <Bottom unfold={this.state.unfold}/>
 
                     <div className="head_img">
                         <img src={this.props.headImg}/>

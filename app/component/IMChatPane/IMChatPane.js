@@ -12,6 +12,7 @@ import {
 } from '../../reduxComponent/actions/chatActions/chatAction'
 
 
+
 import ChatMenu from './ChatMenu/ChatMenu'
 import ChatPane from './ChatPane/ChatPane'
 
@@ -22,14 +23,14 @@ class IMChatPane extends React.Component{
         super(props);
     }
 
-    send(msg,viewChat,id,dispatch){
+    send(msg,viewChat,id,dispatch,userHeadImg){
         let msg_={
             forward:'send',
             type:msg.type,
             content:msg.content,
             date:msg.date,
             time:msg.time,
-            headImg:msg.headImg,
+            headImg:userHeadImg,
             timeStamp:msg.timeStamp,
             read:false
         }
@@ -62,7 +63,7 @@ class IMChatPane extends React.Component{
     }
 
     render(){
-        const {dispatch,msgList,viewChat,id} = this.props;
+        const {dispatch,msgList,viewChat,id,userInfo} = this.props;
         return(
             <div className="bodyPane" >
                 <section className="ChatMenu">
@@ -71,7 +72,7 @@ class IMChatPane extends React.Component{
                     {
                         typeof id=='string'?<ChatPane
                             msgList={msgList}
-                            send={(msg)=>{this.send(msg,viewChat,id,dispatch)}}
+                            send={(msg)=>{this.send(msg,viewChat,id,dispatch,userInfo.headImg)}}
                             id={id}/>
                         :<div className="Pane"/>
                     }
@@ -100,7 +101,8 @@ function select(state){
     return{
         msgList:selectViewChatMsg(state.chatMsg,state.viewChatMsg,state.thisChatId),
         viewChat:state.viewChatMsg?state.viewChatMsg.type:{},
-        id:state.thisChatId
+        id:state.thisChatId,
+        userInfo:state.userInfo
     }
 }
 

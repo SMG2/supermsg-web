@@ -1,0 +1,131 @@
+body,#body{
+    margin: 0;
+    padding: 0;
+    top:0;
+    left:0;
+    min-width: 1196px;
+    width:100%;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: scroll;;
+}
+.MainNav{
+    display: block;
+    width:100%;
+    height: 49px;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 1px #aaaaaa;
+    position: relative;
+    overflow: hidden;
+    z-index: 100;
+}
+.MainNav .navBlock{
+    width:auto;
+    height: 50px;
+    position: absolute;
+    left: 0;right: 0;
+    top:0;bottom: 0;
+    margin: auto;
+    text-align: center;
+}
+.MainNav .navBlock .chatNav,
+.MainNav .navBlock .advNav{
+    display: inline-block;
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
+}
+
+.MainNav div a{
+    display: inline-block;
+    width: 80px;
+    height: 50px;
+    line-height: 50px;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    color:#444444;
+    position: relative;
+}
+
+.MainNav .remindBlock{
+    width: 150px;
+    height: 40px;
+    display: block;
+    position: absolute;
+    top:4px;
+    right: -150px;
+    border-radius: 5px;
+    overflow:hidden;
+    transition: all 0.3s;
+    transition-timing-function: cubic-bezier(.29,1.22,.82,1.25);
+}
+.MainNav .remindBlock:hover{
+    cursor: pointer;
+}
+
+.MainNav .remindBlock .left{
+    display: inline-block;
+    height: 40px;
+    width: 110px;
+    background-color: #00a2ff;
+    vertical-align: top;
+}
+.MainNav .remindBlock .left .remindTitle,
+.MainNav .remindBlock .left .remindMsg{
+    display: block;
+    width: 110px;
+    text-align: center;
+}
+.MainNav .remindBlock .left .remindTitle{
+    height: 22px;
+    line-height: 22px;
+    font-size: 16px;
+    color: #fefefe;
+}
+.MainNav .remindBlock .left .remindMsg{
+    height: 18px;
+    line-height: 18px;
+    font-size: 14px;
+    color: #fefefe;
+}
+
+.MainNav .remindBlock .right{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: #eeeeee;
+    color: #888888;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: top;
+}
+.MainNav .remindBlock .right:hover{
+    background-color: #e4e4e4;
+}
+
+.SecondNav{
+    display: block;
+    margin-top: 1px;
+    width:100%;
+    height: 40px;
+    background-color: #f4f4f4;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    color: #888888;
+    text-align: center;
+}
+.SecondNav div{
+    display: inline-block;
+    width:150px;
+    height: 40px;
+    font-size: 15px;
+    line-height: 40px;
+}
+
+.bodyPane{
+    position: relative;
+    width: 100%;
+    overflow: scroll;
+}

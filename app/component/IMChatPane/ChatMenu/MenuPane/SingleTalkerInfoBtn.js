@@ -16,7 +16,7 @@ export default class SingleTalkerInfoBtn extends React.Component {
     render(){
         const Info=((props)=>{
             return(
-                <div onClick={()=>{props.showInfo()}} className="infoBtn info_">
+                <div onClick={(e)=>{props.showInfo()}} className="infoBtn info_">
                     <i  className="icon-info-sign"/>
                 </div>
             )
@@ -24,8 +24,8 @@ export default class SingleTalkerInfoBtn extends React.Component {
 
         const Member=((props)=>{
             return(
-                <div onClick={()=>{props.showMember()}} className="infoBtn member_">
-                    <i  className="icon-user"/>
+                <div onClick={(e)=>{props.showMember()}} className="infoBtn member_">
+                    <i  className="icon-reorder"/>
                 </div>
             )
         })
@@ -47,7 +47,10 @@ export default class SingleTalkerInfoBtn extends React.Component {
                         {
                             this.props.hover?
                                 <div>
-                                    {this.props.stuNum?<div className="infoBtn"/>:<Member showMember={this.props.showMember}/>}
+                                    {this.props.stuNum?
+                                        <div className="infoBtn"/>
+                                        :
+                                        <Member showMember={this.props.showMember}/>}
                                     <Info showInfo={this.props.showInfo}/>
                                 </div>
                                 :

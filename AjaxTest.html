@@ -3,51 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>ajax 测试</title>
-
+    <link
+            href='http://cdn.webfont.youziku.com/webfonts/nomal/95552/19673/584faa2af629d81420d84063.css'
+            rel='stylesheet'
+            type='text/css'
+    />
+    <style>
+        @font-face {font-family: 'jdzhonyuanjian79c59ff5c17540';src: url('//cdn.webfont.youziku.com/webfonts/nomal/95552/19673/584faa2af629d81420d84063.gif');src: url('//cdn.webfont.youziku.com/webfonts/nomal/95552/19673/584faa2af629d81420d84063.gif?#iefix') format('embedded-opentype'),     url('//cdn.webfont.youziku.com/webfonts/nomal/95552/19673/584faa2af629d81420d84063.bmp') format('woff'),     url('//cdn.webfont.youziku.com/webfonts/nomal/95552/19673/584faa2af629d81420d84063.jpg') format('truetype'),     url('#jdzhonyuanjian') format('svg');   }
+        .css79c59ff5c17540{font-family: 'jdzhonyuanjian79c59ff5c17540';}
+    </style>
 </head>
 <body>
-<div id="f" style="width: 80px;height: 100px;display: block;overflow: hidden;position: relative">
-    <div style="display: inline-block;width: 50px;height: 80px;background-color: #00AA88">
 
-    </div><div style="display: inline-block;width: 50px;height: 80px;background-color: #2f6f9f">
+    <h1 style="font-family:'jdzhonyuanjian79c59ff5c17540';" >杨</h1>
+    <h1 >杨</h1>
+    <h1 style="font-family:'jdzhonyuanjian79c59ff5c17540';" >你的内容</h1>
+    <div class="css79c59ff5c17540" > 你的内容</div>
 
-</div>
-</div>
-
-<script>
-    function createHeader(){
-        var Nonce='123'//Math.floor(Math.random()*100000).toString();
-        var TimeStamp='1477985732446'//new Date().getTime().toString();
-        var Userid='1033614108438';
-        var Signature='744C2B5464CDF7BA9BAF81C78CBD350E7F31BA24';
-        return{
-            Nonce:Nonce,
-            TimeStamp:TimeStamp,
-            Userid:Userid,
-            Signature:Signature
-        }
-    }
-    function GetData(url){
-        var xhr=new XMLHttpRequest();
-        var header=createHeader();
-        xhr.open("GET",url,true);
-        xhr.setRequestHeader('nonce',header.Nonce)
-        xhr.setRequestHeader('timestamp',header.TimeStamp)
-        xhr.setRequestHeader('userid',header.Userid)
-        xhr.setRequestHeader('signature',header.Signature)
-        xhr.onreadystatechange=function(){
-            if(xhr.readyState==4){
-                if(xhr.status==200){
-                    document.getElementById('f').innerHTML='<h1>'+xhr.responseText+'</h1>'
-                }
-            }
-        }
-        xhr.send(null);
-    }
-//    GetData('http://120.27.49.173:8080/v1.0/schools');
-//    GetData('http://localhost:8081');
-
-
-</script>
 </body>
 </html>

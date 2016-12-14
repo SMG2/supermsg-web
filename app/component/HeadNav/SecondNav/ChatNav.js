@@ -8,7 +8,7 @@ import {setP2PList,setGroupList} from '../../../reduxComponent/actions/chatActio
 
 var React=require('react')
 
-class SecondNav extends React.Component{
+class ChatNav extends React.Component{
     constructor(props){
         super(props)
     }
@@ -76,4 +76,4 @@ function select(state) {
     return {};
 }
 
-export default connect(select)(SecondNav)
+export default connect(select)(ChatNav)
