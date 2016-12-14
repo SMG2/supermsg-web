@@ -3,8 +3,8 @@
  */
 
 import {browserHistory} from 'react-router'
+import React from 'react'
 
-var React= require('react')
 export default class SingleTalkerInfoBtn extends React.Component {
     constructor(props) {
         super(props);

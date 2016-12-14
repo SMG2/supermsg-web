@@ -4,7 +4,7 @@
 
 import {browserHistory} from 'react-router'
 
-var React=require('react')
+import React from 'react'
 
 export default class ForgotPane extends React.Component{
     constructor(props){

@@ -4,7 +4,7 @@
 
 import MainNav from '../component/HeadNav/MainNav/MainNav'
 
-var React=require('react')
+import React from 'react'
 
 export default class MainPane extends React.Component{
     constructor(props){

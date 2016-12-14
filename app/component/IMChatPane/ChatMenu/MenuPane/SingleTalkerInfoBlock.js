@@ -8,7 +8,7 @@ import {VIEW_CHAT} from '../../../../reduxComponent/actions/types/chat/chatActio
 import {setChatId} from '../../../../reduxComponent/actions/chatActions/chatAction'
 import {browserHistory,Link} from 'react-router'
 
-var React=require('react')
+import React from 'react'
 
 
 

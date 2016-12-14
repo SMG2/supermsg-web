@@ -5,7 +5,7 @@
 
 import SingleMsg from'./SingleMsg'
 
-var React=require('react');
+import React from 'react'
 
 export default class MsgPane extends React.Component{
     constructor(props){

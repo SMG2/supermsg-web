@@ -16,8 +16,7 @@ import QrCodeButton from './ButtonPane/QrCodeButton'
 import createAjax from '../../plugin/Ajax/createAjax'
 import {setCookie} from '../../plugin/Cookie/MyCookie'
 
-
-var React=require('react')
+import React from 'react'
 
 class LoginPane extends React.Component{
     constructor(props){

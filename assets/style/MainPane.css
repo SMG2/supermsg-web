@@ -20,7 +20,7 @@ body,#body{
     z-index: 100;
 }
 .MainNav .navBlock{
-    width:auto;
+    width:400px;
     height: 50px;
     position: absolute;
     left: 0;right: 0;
@@ -28,6 +28,51 @@ body,#body{
     margin: auto;
     text-align: center;
 }
+.MainNav .logoBlock{
+    display: block;
+    width:290px;
+    height: 50px;
+    position: absolute;
+    left: 10px;
+    top:0;
+    font-size: 25px;
+    line-height: 50px;
+    text-align: start;
+    font-family:'FuturamaBoldFon75a4c414117540';
+}
+.MainNav .menuBlock{
+    display: block;
+    width:300px;
+    height: 50px;
+    position: absolute;
+    right: 0;
+    top:0;
+    /*background-color: #00a2ff;*/
+}
+
+.MainNav .menuBlock div{
+    display: inline-block;
+    width: 70px;
+    height: 50px;
+    /*background-color: #fcf8e3;*/
+    float: right;
+    text-align: center;
+    border-left: 1px solid #e1e1e1;
+}
+.MainNav .menuBlock div:hover{
+    cursor: pointer;
+}
+
+.MainNav .menuBlock div img{
+    display: inline-block;
+    margin-top: 7px;
+    width: 36px;
+    height: 36px;
+    object-fit: fill;
+    border-radius: 40px;
+}
+
+
 .MainNav .navBlock .chatNav,
 .MainNav .navBlock .advNav{
     display: inline-block;
@@ -48,60 +93,81 @@ body,#body{
     position: relative;
 }
 
-.MainNav .remindBlock{
+.remindBlock{
     width: 150px;
     height: 40px;
     display: block;
     position: absolute;
-    top:4px;
+    top:50px;
     right: -150px;
     border-radius: 5px;
     overflow:hidden;
     transition: all 0.3s;
     transition-timing-function: cubic-bezier(.29,1.22,.82,1.25);
+    z-index: 1000;
 }
-.MainNav .remindBlock:hover{
+.remindBlock:hover{
     cursor: pointer;
 }
 
-.MainNav .remindBlock .left{
+.remindBlock .left{
     display: inline-block;
     height: 40px;
     width: 110px;
     background-color: #00a2ff;
     vertical-align: top;
 }
-.MainNav .remindBlock .left .remindTitle,
-.MainNav .remindBlock .left .remindMsg{
+.remindBlock .left .remindTitle,
+.remindBlock .left .remindMsg{
     display: block;
     width: 110px;
     text-align: center;
 }
-.MainNav .remindBlock .left .remindTitle{
+.remindBlock .left .remindTitle{
     height: 22px;
     line-height: 22px;
     font-size: 16px;
     color: #fefefe;
 }
-.MainNav .remindBlock .left .remindMsg{
+.remindBlock .left .remindMsg{
     height: 18px;
     line-height: 18px;
     font-size: 14px;
     color: #fefefe;
 }
 
-.MainNav .remindBlock .right{
+.remindBlock .right{
     display: inline-block;
     height: 40px;
     width: 40px;
-    background-color: #eeeeee;
-    color: #888888;
+    background-color: #dfdfdf;
+    color: #999999;
     line-height: 40px;
     text-align: center;
     vertical-align: top;
 }
-.MainNav .remindBlock .right:hover{
-    background-color: #e4e4e4;
+.remindBlock .right:hover{
+    background-color: #d1d1d1;
+}
+
+.menuPane{
+    position: absolute;
+    display: block;
+    width: 150px;
+    background-color: #00AA88;
+    top:60px;
+    right: 10px;
+    z-index: 999;
+
+}
+.menuPane div{
+    display: block;
+    width: 150px;
+    height: 40px;
+    background-color: #fefefe;
+}
+.menuPane div:hover{
+    background-color: #efefef;
 }
 
 .SecondNav{
@@ -112,9 +178,10 @@ body,#body{
     background-color: #f4f4f4;
     position: relative;
     overflow: hidden;
-    z-index: 0;
+    /*z-index: 0;*/
     color: #888888;
     text-align: center;
+    border-bottom: 1px solid #cccccc;
 }
 .SecondNav div{
     display: inline-block;

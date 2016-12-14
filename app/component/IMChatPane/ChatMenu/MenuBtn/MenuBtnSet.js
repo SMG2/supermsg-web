@@ -5,7 +5,7 @@
 import {Link} from 'react-router'
 
 
-var React=require('react');
+import React from 'react'
 
 export default class MenuBtnSet extends React.Component{
     constructor(props){

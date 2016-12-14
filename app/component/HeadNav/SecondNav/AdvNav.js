@@ -9,7 +9,7 @@ import {Link,browserHistory} from 'react-router'
 import {connect} from 'react-redux'
 import {setP2PList,setGroupList} from '../../../reduxComponent/actions/chatActions/chatAction'
 
-var React=require('react')
+import React from 'react'
 
 class SecondNav extends React.Component{
     constructor(props){

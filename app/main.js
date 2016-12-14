@@ -16,9 +16,9 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import Router from './Router'
 
 import ajax from './plugin/Ajax/createAjax'
+import React from 'react'
 
-var React= require('react');
-var ReactDOM= require('react-dom');
+import ReactDOM from 'react-dom'
 
 
 var reducers=combineReducers({

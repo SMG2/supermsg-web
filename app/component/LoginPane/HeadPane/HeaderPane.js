@@ -2,7 +2,7 @@
  * Created by yangbingxun on 2016/11/30.
  */
 
-var React=require('react')
+import React from 'react'
 
 export default class HeaderInput extends React.Component{
     constructor(props){

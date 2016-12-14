@@ -10,7 +10,7 @@ import {setChatId} from '../../../../reduxComponent/actions/chatActions/chatActi
 import SingleTalkerInfoBtn from './SingleTalkerInfoBtn'
 import SingleTalkerInfoBlock from './SingleTalkerInfoBlock'
 
-var React=require('react');
+import React from 'react'
 
 class SingleTalker extends React.Component{
     constructor(props){

@@ -6,7 +6,7 @@
 import InputBar from './InputBar/InputBar'
 import MsgPane from'./MsgPane/MsgPane'
 
-var React=require('react');
+import React from 'react'
 
 export default class ChatPane extends React.Component {
     constructor(props) {

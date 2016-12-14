@@ -4,7 +4,7 @@
 
 import SingleTalker from './SingleTalker'
 
-var React=require('react')
+import React from 'react'
 
 export default class TalkerMenu extends React.Component{
     constructor(props){

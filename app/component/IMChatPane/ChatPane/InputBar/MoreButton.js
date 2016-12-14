@@ -1,8 +1,8 @@
 /**
  * Created by yangbingxun on 2016/11/18.
  */
+import React from 'react'
 
-var React=require('react');
 export default class MoreBtn extends React.Component {
     constructor(props) {
         super(props);

@@ -11,7 +11,7 @@ import MenuBtnP from './MenuBtn/MenuBtnP'
 import MenuBtnSet from './MenuBtn/MenuBtnSet'
 import TalkerMenu from './MenuPane/TalkerMenu'
 
-var React = require('react');
+import React from 'react'
 
 class ChatMenu extends React.Component{
     constructor(props){
@@ -88,11 +88,11 @@ function animate(viewChat){
     switch (viewChat){
         case VIEW_CHAT.GROUP_CHAT:
             $('.group').css({backgroundColor:'#dddddd'})
-            $('.p2p').css({backgroundColor:'#ffffff'})
+            $('.p2p').css({backgroundColor:'transparent'})
             break;
         case VIEW_CHAT.P2P_CHAT:
             $('.p2p').css({backgroundColor:'#dddddd'})
-            $('.group').css({backgroundColor:'#ffffff'})
+            $('.group').css({backgroundColor:'transparent'})
             break;
     }
 }

@@ -14,7 +14,7 @@ import LoginPane from './component/LoginPane/LoginPane'
 import IMChatPane from './component/IMChatPane/IMChatPane'
 import SignPane from './component/SignPane/SignPane'
 
-var React= require('react');
+import React from 'react'
 
 export default function Routers(props){
 

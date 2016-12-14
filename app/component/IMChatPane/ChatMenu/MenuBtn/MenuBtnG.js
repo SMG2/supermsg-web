@@ -5,7 +5,7 @@
 import {VIEW_CHAT} from '../../../../reduxComponent/actions/types/chat/chatActionType'
 import {Link} from 'react-router'
 
-var React=require('react');
+import React from 'react'
 
 export default class MenuBtnG extends React.Component{
     constructor(props){

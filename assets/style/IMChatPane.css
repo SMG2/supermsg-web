@@ -1,4 +1,7 @@
 
+.bodyPane{
+    background-color: #f4f4f4;
+}
 /*ChatPane*/
 .ChatPane{
     width: 75%;
@@ -13,18 +16,18 @@
     width:1000px;
     height: 650px;
     overflow: hidden;
-    background-color: #efefef;
     border: 1px solid #bcbcbc;
     top:0;left:4%;bottom: 0;
     margin: auto;
     border-radius: 5px;
+    background-color: #ffffff;
 }
 
 .msgContent{
     width:100%;
     height: 600px;
     overflow: scroll;
-    background-color: #efefef;
+    background-color: #ffffff;
 }
 .singleMsg{
     position: relative;
@@ -424,6 +427,7 @@
     position: relative;
     text-align: center;
     color: #444444;
+    background-color: #eeeeee;
 
 }
 .menuBtn i{

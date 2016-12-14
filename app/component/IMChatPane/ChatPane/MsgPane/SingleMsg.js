@@ -3,7 +3,7 @@
  */
 import TimeBar from './TimeBar'
 
-var React=require('react');
+import React from 'react'
 
 export default class SingleMsg extends React.Component{
     constructor(props){

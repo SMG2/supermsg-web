@@ -3,8 +3,7 @@
  */
 
 import {Link} from 'react-router'
-
-var React=require('react')
+import React from 'react'
 
 export default class OtherPane extends React.Component{
     constructor(props){

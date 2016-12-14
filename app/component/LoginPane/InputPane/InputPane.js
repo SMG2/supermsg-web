@@ -3,8 +3,9 @@
  */
 
 import {Link} from 'react-router'
+import React from 'react'
 
-var React=require('react')
+
 import LoginButton from '../ButtonPane/LoginButton'
 
 

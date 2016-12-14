@@ -2,7 +2,7 @@
  * Created by yangbingxun on 2016/12/1.
  */
 
-var React=require('react')
+import React from 'react'
 
 export default class QrCodeButton extends React.Component{
     constructor(props){

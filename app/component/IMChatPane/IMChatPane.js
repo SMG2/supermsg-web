@@ -16,7 +16,7 @@ import {
 import ChatMenu from './ChatMenu/ChatMenu'
 import ChatPane from './ChatPane/ChatPane'
 
-var React = require('react');
+import React from 'react'
 
 class IMChatPane extends React.Component{
     constructor(props){

@@ -8,7 +8,7 @@ import EmotionButton from './EmotionButton'
 import MoreButton from './MoreButton'
 import MsgInput from './MsgInput'
 
-var React=require('react');
+import React from 'react'
 
 class InputBar extends React.Component{
     constructor(props){

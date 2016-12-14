@@ -8,8 +8,7 @@ import {connect} from 'react-redux'
 
 import {getCookie} from '../../../plugin/Cookie/MyCookie'
 import createAjax from '../../../plugin/Ajax/createAjax'
-
-var React=require('react')
+import React from 'react'
 
 class MainNav extends React.Component{
     constructor(props){
@@ -86,7 +85,7 @@ class MainNav extends React.Component{
 
 
     render(){
-        const {dispatch} =this.props;
+        const {dispatch,userInfo} =this.props;
 
         const chat=location.pathname.indexOf('chat')
         const adv=location.pathname.indexOf('adv')
@@ -112,7 +111,11 @@ class MainNav extends React.Component{
         }
 
         return(
+            <div>
             <div className="MainNav">
+                <div className="logoBlock">
+                    <b>S</b>choolMsg
+                </div>
                 <div className="navBlock">
                     <div className="chatNav">
                         <Link to="/user/chat"
@@ -154,20 +157,25 @@ class MainNav extends React.Component{
                     </div>
                 </div>
 
+                <MenuBlock headImg={userInfo.headImg}/>
+            </div>
                 <RemindBlock
-                    title={this.state.remindTitle}
-                    msg={this.state.remindMsg}
-                    show={this.state.showRemind}
-                    click={(e)=>(this.clickRemindBlock(e))}
-                    dispatch={dispatch}
-                />
+                title={this.state.remindTitle}
+                msg={this.state.remindMsg}
+                show={this.state.showRemind}
+                click={(e)=>(this.clickRemindBlock(e))}
+                dispatch={dispatch}
+                    />
+                {/*<MenuPane />*/}
             </div>
         )
     }
 }
 
 function select(state){
-    return{}
+    return{
+        userInfo:state.userInfo
+    }
 }
 
 export default connect(select)(MainNav)
@@ -202,4 +210,38 @@ class RemindBlock extends React.Component{
         )
 
     }
+}
+
+class MenuBlock extends React.Component{
+    constructor(props){
+        super(props)
+    }
+
+    render(){
+        return(
+            <div className="menuBlock">
+                <div className="btnBlock">
+                    <img src={this.props.headImg} />
+                </div>
+            </div>
+        )
+    }
+}
+
+class MenuPane extends React.Component{
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+
+        return(
+            <div className="menuPane">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        )
+    }
+
 }
