@@ -67,7 +67,12 @@ class SecondNav extends React.Component{
         return(
             <div>
                 <div className="SecondNav chatNav">
-                    <div onClick={()=>{this.initUserInfo(dispatch)}}>写公告</div>
+                    <Link to="/user/notice/write"
+                          activeStyle={{color: '#00a2ff'}}
+                        onClick={()=>{
+                        this.initUserInfo(dispatch);
+                    }}
+                    >写公告</Link>
                 </div>
                 {this.props.children}
             </div>

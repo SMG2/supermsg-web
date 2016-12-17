@@ -88,9 +88,7 @@ class MainNav extends React.Component{
         const {dispatch,userInfo} =this.props;
 
         const chat=location.pathname.indexOf('chat')
-        const adv=location.pathname.indexOf('adv')
-
-
+        const adv=location.pathname.indexOf('notice')
 
         const Line=(props)=>{
             const css={
@@ -137,22 +135,22 @@ class MainNav extends React.Component{
                         </Link>
                     </div>
                     <div className="advNav">
-                        <Link to="/user/adv"
+                        <Link to="/user/notice"
                               onClick={(e)=>{
                                   this.setState({
-                                      on:'adv'
+                                      on:'notice'
                                   })
                               }}
                               onMouseOver={(e)=>{
-                                  adv>0?this.setState({on:'adv'}):null;
-                                  if(this.state.on!='adv') this.enter($(e.target))
+                                  adv>0?this.setState({on:'notice'}):null;
+                                  if(this.state.on!='notice') this.enter($(e.target))
                               }}
                               onMouseOut={(e)=>{
-                                  if(this.state.on!='adv') this.leave($(e.target))
+                                  if(this.state.on!='notice') this.leave($(e.target))
                               }}
                         >
                             公告
-                            {adv>0?<Line active={true}/>:<Line active={this.state.on=="adv"}/>}
+                            {adv>0?<Line active={true}/>:<Line active={this.state.on=="notice"}/>}
                         </Link>
                     </div>
                 </div>

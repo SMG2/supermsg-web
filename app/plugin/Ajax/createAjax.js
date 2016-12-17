@@ -17,6 +17,7 @@ option={
  */
 
 export default function ajax(option){
+    if(!option) return;
     const host='http://120.27.49.173:8080';
     var id=option.id||'000';
     var url=option.url.indexOf("http")>0?option.url:host+option.url;

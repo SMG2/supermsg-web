@@ -9,6 +9,9 @@ body,#body{
     overflow-y: hidden;
     overflow-x: scroll;;
 }
+.bodyPane{
+    background-color: #f4f4f4;
+}
 .MainNav{
     display: block;
     width:100%;
@@ -179,16 +182,21 @@ body,#body{
     position: relative;
     overflow: hidden;
     /*z-index: 0;*/
-    color: #888888;
     text-align: center;
     border-bottom: 1px solid #cccccc;
 }
-.SecondNav div{
+.SecondNav div,
+.SecondNav a{
     display: inline-block;
     width:150px;
     height: 40px;
     font-size: 15px;
     line-height: 40px;
+    text-decoration: none;
+    color:#888888;
+}
+.SecondNav a:hover{
+    color: #00a2ff;
 }
 
 .bodyPane{

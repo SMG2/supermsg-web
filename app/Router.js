@@ -7,11 +7,15 @@ import { Router, Route, IndexRoute} from 'react-router';
 import MainPane from './component/MainPane'
 
 import ChatNav from './component/HeadNav/SecondNav/ChatNav'
-import AdvNav from './component/HeadNav/SecondNav/AdvNav'
+import NoticeNav from './component/HeadNav/SecondNav/NoticeNav'
 
 import ForgotPane from './component/LoginPane/ForgotPane/ForgotPane'
 import LoginPane from './component/LoginPane/LoginPane'
 import IMChatPane from './component/IMChatPane/IMChatPane'
+import WritePane from './component/NoticePane/NoticeWritePane/NoticeWritePane'
+
+import NoticePane from './component/NoticePane/NoticePane'
+
 import SignPane from './component/SignPane/SignPane'
 
 import React from 'react'
@@ -30,7 +34,10 @@ export default function Routers(props){
                         <Route path="group(/:id)" component={IMChatPane}/>
                         <Route path="p2p(/:id)" component={IMChatPane}/>
                     </Route>
-                    <Route path="adv" component={AdvNav}>
+
+                    <Route path="notice" component={NoticeNav}>
+                        <IndexRoute component={NoticePane}/>
+                        <Route path="write"  component={WritePane}/>
 
                     </Route>
                 </Route>
