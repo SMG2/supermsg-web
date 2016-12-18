@@ -68,7 +68,9 @@ export default class WriteBlock extends React.Component{
                     <div className="ButtonBlock">
                         <div
                             onClick={()=>{
-                                combineTitleNContent(this.state.Title,this.state.UMEditor.getContent())
+                                this.props.send(
+                                    combineTitleNContent(this.state.Title,this.state.UMEditor.getContent())
+                                )
                             }}>
                             发送
                         </div>
@@ -103,5 +105,7 @@ function combineTitleNContent(h_,content_){
                     .append(content)
             )
     )
+
+    return html_.html();
 
 }

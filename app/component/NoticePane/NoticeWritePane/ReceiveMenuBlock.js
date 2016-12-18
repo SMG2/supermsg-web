@@ -8,12 +8,13 @@ import {connect} from 'react-redux'
 class ReceiveMenuBlock extends React.Component{
     constructor(props){
         super(props)
-
         this.state={
             memberList_:null,
             memberList:null,
             showSearchResult:false,
-            searchWord:''
+            searchWord:'',
+            update:props.update
+
         }
         this.showSearchResult=this.showSearchResult.bind(this)
     }
@@ -21,6 +22,18 @@ class ReceiveMenuBlock extends React.Component{
     getList(){
         return this.state.memberList_;
     }
+
+    updateParent(){
+        let receiveList=[];
+        let memberList_=this.getList();
+        for (var k in memberList_){
+            if(memberList_[k]){
+                receiveList.push(k)
+            }
+        }
+        this.state.update(receiveList);
+    }
+
 
     showSearchResult(show){
         this.setState({
@@ -81,7 +94,7 @@ class ReceiveMenuBlock extends React.Component{
                     <ReceivePeopleBlock
                         memberList_={memberList_}
                         receiveList={receiveList}
-                        setThatState={(state)=>{this.setState(state)}}
+                        setThatState={(state)=>{this.setState(state,()=>{this.updateParent()})}}
                     />
 
 
@@ -90,7 +103,7 @@ class ReceiveMenuBlock extends React.Component{
                     {
                         this.state.showSearchResult?
                             <SearchResultLabel
-                                setThatState={(state)=>{this.setState(state)}}
+                                setThatState={(state)=>{this.setState(state,()=>{this.updateParent()})}}
                                 memberList_={memberList_}
                                 showMemberList={showMemberList}
                             />
@@ -154,6 +167,8 @@ class SearchResultLabel extends React.Component{
             memberList_:props.memberList_,
         }
     }
+
+
 
     componentDidMount(){
         var that=this;
@@ -293,7 +308,14 @@ class SearchResultLabel extends React.Component{
                             <div>全选</div>
                         </div>
                         <div className="sureBlock">
-                            <div >确认</div>
+                            <div onClick={()=>{
+                                this.state.setThatState({showSearchResult:false
+                                })
+                                }
+                                }
+                            >
+                                确认
+                            </div>
                         </div>
                     </div>
                     <MemberListBlock />
@@ -333,7 +355,6 @@ class ReceivePeopleBlock extends React.Component{
             memberList_:memberList_
         })
     }
-
 
     render(){
 

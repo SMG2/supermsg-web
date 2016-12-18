@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>demo</title>
+    <!--引入React库-->
+    <script src="lib/react.min.js"></script>
+    <!--引入JSX转换库-->
+    <script src="lib/JSXTransformer.js"></script>
+    <!--组件样式-->
+</head>
+<body>
+<!--定义容器-->
+<div id="content"></div>
+
+<!--声明脚本类型为JSX-->
+<script type="text/jsx">
+
+    var InnerComponent = React.createClass({
+        shouldComponentUpdate: function(nextProps, nextState) {
+            return this.props.value.foo !== nextProps.value.foo;
+        },
+        render: function() {
+            return (
+                    <div>
+                        {this.props.value.foo}
+                    </div>
+            );
+        }
+    });
+
+    var OutComponent = React.createClass({
+        getInitialState: function() {
+            return { value: { foo: 'bar' } };
+        },
+
+        onClick: function() {
+            var value = this.state.value;
+            value.foo += 'bar'; // ANTI-PATTERN!
+            this.setState({ value: value });
+        },
+
+        render: function() {
+            return (
+                    <div>
+                        <InnerComponent value={this.state.value} />
+                        <a onClick={this.onClick}>Click me</a>
+                    </div>
+            );
+        }
+    });
+
+    React.render(<OutComponent />, document.querySelector("#content"));
+
+</script>
+</body>
+</html>

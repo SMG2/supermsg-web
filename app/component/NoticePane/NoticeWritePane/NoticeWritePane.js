@@ -10,6 +10,10 @@ import WriteBlock from './WriteBlock'
 export default class NoticeWritePane extends React.Component{
     constructor(props){
         super(props)
+        this.state={
+            receiveList:[],
+            noticeContent:''
+        }
     }
 
     componentDidMount(){
@@ -17,12 +21,34 @@ export default class NoticeWritePane extends React.Component{
         $('.bodyPane').css(css);
     }
 
+    submit(){
+
+    }
+
+    setNoticeContent(content){
+        this.setState({
+            noticeContent:content
+        },()=>{
+            console.log(this.state.noticeContent)
+            console.log(this.state.receiveList)
+        })
+    }
+
+    setReceiveList(receiveList){
+        this.setState({
+            receiveList:receiveList
+        })
+    }
 
     render(){
         return (
             <div className="bodyPane">
-                <WriteBlock/>
-                <ReceiveMenuBlock/>
+                <WriteBlock send={(content)=>{
+                    this.setNoticeContent(content);
+                }}/>
+                <ReceiveMenuBlock update={(receiveList)=>{
+                    this.setReceiveList(receiveList)
+                }}/>
             </div>
         )
     }
