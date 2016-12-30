@@ -10,8 +10,7 @@ import {
     sendMsgToP,
     read
 } from '../../reduxComponent/actions/chatActions/chatAction'
-
-
+import createAjax from '../../plugin/Ajax/createAjax'
 
 import ChatMenu from './ChatMenu/ChatMenu'
 import ChatPane from './ChatPane/ChatPane'
@@ -23,7 +22,7 @@ class IMChatPane extends React.Component{
         super(props);
     }
 
-    send(msg,viewChat,id,dispatch,userHeadImg){
+    send(msg,viewChat,id,dispatch,userHeadImg,userId){
         let msg_={
             forward:'send',
             type:msg.type,
@@ -43,6 +42,20 @@ class IMChatPane extends React.Component{
                 setTimeout(()=>{
                     dispatch(read(VIEW_CHAT.GROUP_CHAT,id));
                 },1000)
+                //向服务器发送消息
+                createAjax({
+                    id:userId,
+                    method:'post',
+                    url:'/v1.0/users/'+userId+'/messages/push',
+                    data:{
+                        userid:userId,
+                        groupid:id,
+                        content:msg.content
+                    },
+                    success:function(data,msg){
+                        console.log(msg)
+                    }
+                })
                 browserHistory.push('/user/chat/group/'+id) //通过push路由 重新渲染当前页面 因为redux不能进行自动渲染
                 break;
             case VIEW_CHAT.P2P_CHAT:
@@ -72,7 +85,7 @@ class IMChatPane extends React.Component{
                     {
                         typeof id=='string'?<ChatPane
                             msgList={msgList}
-                            send={(msg)=>{this.send(msg,viewChat,id,dispatch,userInfo.headImg)}}
+                            send={(msg)=>{this.send(msg,viewChat,id,dispatch,userInfo.headImg,userInfo.id)}}
                             id={id}/>
                         :<div className="Pane"/>
                     }

@@ -69,7 +69,8 @@ export default class WriteBlock extends React.Component{
                         <div
                             onClick={()=>{
                                 this.props.send(
-                                    combineTitleNContent(this.state.Title,this.state.UMEditor.getContent())
+                                    combineTitleNContent(this.state.Title,this.state.UMEditor.getContent()),
+                                    this.state.Title
                                 )
                             }}>
                             发送
@@ -91,9 +92,8 @@ function combineTitleNContent(h_,content_){
     var html_=$('<div></div>');//套在最外层
     var html=$('<html></html>');
     var head=$('<head></head>');
-    var title=$('<title>公告</title>');
+    var title=$('<title>'+h_+'</title>');
     var body=$('<body></body>');
-    var h1=$('<h1>'+h_+'</h1>');
     var content=$('<div>'+content_+'</div>');
 
     html_.append(
@@ -101,8 +101,7 @@ function combineTitleNContent(h_,content_){
             head.append(title)
         )
             .append(
-                body.append(h1)
-                    .append(content)
+                body.append(content)
             )
     )
 

@@ -101,7 +101,7 @@
             if (state == "SUCCESS") {
                 //显示图片计数+1
                 Upload.showCount++;
-                var $img = $("<img src='" + editor.options.imagePath + url + "' class='edui-image-pic' />"),
+                var $img = $("<img src='" + url + "' class='edui-image-pic' />"),
                     $item = $("<div class='edui-image-item edui-image-upload-item'><div class='edui-image-close'></div></div>").append($img);
 
                 if ($(".edui-image-upload2", $w).length < 1) {
@@ -148,6 +148,7 @@
             var me = this;
 
             me.editor = editor;
+
             me.dialog = $w;
             me.render(".edui-image-local", 1);
             me.config(".edui-image-upload1");
@@ -186,6 +187,8 @@
             var me = this;
             try{
                 var json = eval('('+r+')');
+                json.state=json.status;
+
                 Base.callback(me.editor, me.dialog, json.url, json.state);
             }catch (e){
                 var lang = me.editor.getLang('image');
@@ -204,14 +207,23 @@
                     return;
                 }
 
-                $('<iframe name="up"  style="display: none"></iframe>').insertBefore(me.dialog).on('load', function(){
-                    var body = (this.contentDocument || this.contentWindow.document).body,
-                        r = body.innerText || body.textContent || '';
-                    if(r == '')return;
-                    me.uploadComplete(r);
-                    $(this).unbind('load');
-                    $(this).remove();
 
+                var state=0;
+               $('<iframe name="up"  style="display: none" sandbox="allow-same-origin allow-scripts" id="uploadFrame"></iframe>')
+                   .insertBefore(me.dialog)
+                   .on('load', function(){
+                       if(state==0){
+
+                           state=1;
+                           this.contentWindow.location="http://localhost:8081/";
+
+                       }else if(state==1) {
+                           var r=this.contentWindow.name;
+                           if(r == '')return;
+                           me.uploadComplete(r);
+                           $(this).unbind('load');
+                           $(this).remove();
+                       }
                 });
 
                 $(this).parent()[0].submit();
@@ -271,6 +283,14 @@
                             xhr.send(fd);
                             xhr.addEventListener('load', function (e) {
                                 var r = e.target.response, json;
+
+                                /*
+                                    r={
+                                        url:
+                                        state: ||""
+                                    }
+                                 */
+
                                 me.uploadComplete(r);
                                 if (i == fileList.length - 1) {
                                     $(img).remove()

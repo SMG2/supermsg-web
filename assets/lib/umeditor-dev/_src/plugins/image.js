@@ -11,8 +11,6 @@
  */
 UM.commands['insertimage'] = {
     execCommand:function (cmd, opt) {
-        console.log(cmd)
-        console.log(opt)
         opt = utils.isArray(opt) ? opt : [opt];
         if (!opt.length) {
             return;

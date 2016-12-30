@@ -31,7 +31,7 @@ export default function ajax(option){
 
     if(type=='json'){
         var a=[];
-        data=typeof data=='object'?data:JSON.parse(data)
+        data=typeof data==='object'?data:JSON.parse(data);
         for(var k in data){
             a.push(k+"="+data[k]);
         }
@@ -50,11 +50,16 @@ export default function ajax(option){
         readyStateCall(xhr.readyState);
         if(xhr.readyState==4){
             if(xhr.status==200){
-                response=JSON.parse(xhr.responseText);
-                success(response.data,response.msg,response.status)
+                try{
+                    response=JSON.parse(xhr.responseText);
+                    success(response.data,response.msg,response.status)
+                }catch (e){}
             }else{
-                response=JSON.parse(xhr.responseText);
-                fail(response.msg,response.status)
+                try{
+                    response=JSON.parse(xhr.responseText);
+                    fail(response.msg,response.status)
+            }catch(e){}
+
             }
         }
     }

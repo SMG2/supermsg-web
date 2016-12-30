@@ -121,7 +121,6 @@
         var currentPath = document.getElementsByTagName('script');
 
         currentPath = currentPath[ currentPath.length -1 ].src;
-
         return new PathStack().push( currentPath ) + "";
 
 
@@ -131,14 +130,16 @@
      * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。
      */
 
+    URL="http://localhost:8081/lib/umeditor-dev/";
+    var UploadIMGURL='http://120.27.49.173:8080/v1.0/images/upload';
     window.UMEDITOR_CONFIG = {
 
         //为编辑器实例添加一个路径，这个不能被注释
         UMEDITOR_HOME_URL : URL
 
         //图片上传配置区
-        ,imageUrl:URL+"php/imageUp.php"             //图片上传提交地址
-        ,imagePath:URL + "php/"                     //图片修正地址，引用了fixedImagePath,如有特殊需求，可自行配置
+        ,imageUrl:UploadIMGURL             //图片上传提交地址
+        ,imagePath:UploadIMGURL                     //图片修正地址，引用了fixedImagePath,如有特殊需求，可自行配置
         ,imageFieldName:"upfile"                   //图片数据的key,若此处修改，需要在后台对应文件修改对应参数
 
 
@@ -247,4 +248,5 @@
         //填写过滤规则
         //,filterRules: {}
     };
+
 })();

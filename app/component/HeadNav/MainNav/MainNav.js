@@ -109,7 +109,7 @@ class MainNav extends React.Component{
         }
 
         return(
-            <div>
+            <div className="headerNav">
             <div className="MainNav">
                 <div className="logoBlock">
                     <b>S</b>choolMsg
@@ -184,6 +184,24 @@ class RemindBlock extends React.Component{
         this.state={
             hidden:false
         }
+    }
+
+    componentDidMount(){
+
+    }
+
+    componentWillReceiveProps(nextProps){
+        var css=nextProps.show?{display:'block'}:{display:'none'}
+        if(nextProps.show){
+            $('.remindBlock').css(css)
+        }else {
+            setTimeout(()=>{$('.remindBlock').css(css)},300)
+        }
+    }
+
+    componentDidUpdate(){
+
+
     }
 
     render(){
